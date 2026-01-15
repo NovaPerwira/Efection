@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+      --bg-main: #0a0a0a;
+      --bg-secondary: #171717;
+      --text-main: #ededed;
+      --text-muted: #a1a1aa;
+      --color-primary: #10b981; /* Emerald-500 */
+      --color-primary-glow: rgba(16, 185, 129, 0.5);
+    }
+    
+    /* Animasi muncul per huruf (Smooth Letter Reveal) */
+    @keyframes letterReveal {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Muncul dari sedikit kiri */
+        filter: blur(10px); /* Efek blur awal */
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+      }
+    }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+    /* Custom Scrollbar for the mock hero */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main); 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333; 
+      border-radius: 4px;
+    }

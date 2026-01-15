@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-
+import Image from 'next/image';
 // --- Helper Component (Defined before use) ---
 
 interface RevealTextProps {
@@ -72,13 +72,13 @@ const HeroSection = () => {
         
         {/* Layer Background (Zoom Only, Position Fixed visually) */}
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 w-full h-full">
-          <img 
+          <Image 
             src="https://images.unsplash.com/photo-1768310481123-9c8e4e6fc61a?q=80&w=1170&auto=format&fit=crop" 
             alt="Candi Borobudur Landscape" 
             className="w-full h-full object-cover"
           />
           {/* Gradient Overlay Tetap */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/80" />
           {/* Dynamic Overlay untuk transisi */}
           <motion.div style={{ opacity: overlayOpacity }} className="absolute inset-0 bg-black" />
         </motion.div>
@@ -124,10 +124,10 @@ const HeroSection = () => {
           className="absolute bottom-0 left-0 right-0 h-[40vh] md:h-[60vh] z-30 pointer-events-none flex items-end justify-center"
         >
           <div className="relative w-full h-full max-w-7xl mx-auto">
-             <img 
+             <Image 
                src="https://images.unsplash.com/photo-1629814408013-41e988c5201d?q=80&w=2070&auto=format&fit=crop"
                alt="Siluet Wayang"
-               className="w-full h-full object-contain object-bottom md:object-right-bottom drop-shadow-2xl brightness-0 contrast-125"
+               className="w-full h-full object-contain object-bottom md:object-bottom-right drop-shadow-2xl brightness-0 contrast-125"
                style={{
                  maskImage: 'linear-gradient(to top, black 80%, transparent 100%)',
                  WebkitMaskImage: 'linear-gradient(to top, black 80%, transparent 100%)'
