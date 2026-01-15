@@ -5,8 +5,8 @@
       --bg-secondary: #171717;
       --text-main: #ededed;
       --text-muted: #a1a1aa;
-      --color-primary: #10b981; /* Emerald-500 */
-      --color-primary-glow: rgba(16, 185, 129, 0.5);
+      --color-primary: #FFBE00; /* Emerald-500 */
+      --color-primary-glow: #FEDB73;
     }
     
     /* Animasi muncul per huruf (Smooth Letter Reveal) */

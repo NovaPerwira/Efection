@@ -1,7 +1,9 @@
 'use client';
 import HeroPage from "@/components/Hero";
 import { useEffect, useState } from "react";
-
+import EffectionIVSection from "@/components/EffectionIVSection";
+import WinnerSection from "@/components/WinnerSection";
+import StickyZoomSection from "@/components/paralaxwapper";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -94,7 +96,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       {/* Decorative Technical Elements */}
       <div className="absolute bottom-10 left-0 w-full px-10 flex justify-between opacity-30 text-xs font-mono">
-        <div>ID: 8492-XJ</div>
+        <div>EFECTION IV</div>
         <div>SECURE CONNECTION</div>
       </div>
     </div>
@@ -109,10 +111,26 @@ export default function Home() {
     };
 
   return (
-    <>
-      {loading && <SplashScreen onComplete={handleLoadingComplete} />}
-      {!loading && <HeroPage />}
+    // <>
+    //   {loading && <SplashScreen onComplete={handleLoadingComplete} />}
+    //   {!loading && <WinnerSection />}
     
+    // </>
+
+    <>
+     {loading && <SplashScreen onComplete={handleLoadingComplete} />}
+      {/* SECTION 1 */}
+      <EffectionIVSection />
+
+      {/* SECTION 2 (ZOOM ONLY) */}
+      <StickyZoomSection>
+        <WinnerSection />
+      </StickyZoomSection>
+
+      {/* SECTION AFTER ZOOM */}
+      <section className="min-h-screen bg-black text-white flex items-center justify-center">
+        <h2 className="text-4xl font-serif">Next Section</h2>
+      </section>
     </>
   );
 }
