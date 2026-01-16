@@ -117,12 +117,15 @@ export default function Home() {
     
     // </>
 
+   <>
+  {loading ? (
+    <SplashScreen onComplete={handleLoadingComplete} />
+  ) : (
     <>
-     {loading && <SplashScreen onComplete={handleLoadingComplete} />}
       {/* SECTION 1 */}
       <EffectionIVSection />
 
-      {/* SECTION 2 (ZOOM ONLY) */}
+      {/* SECTION 2 */}
       <StickyZoomSection>
         <WinnerSection />
       </StickyZoomSection>
@@ -132,6 +135,9 @@ export default function Home() {
         <h2 className="text-4xl font-serif">Next Section</h2>
       </section>
     </>
+  )}
+</>
+
   );
 }
     
