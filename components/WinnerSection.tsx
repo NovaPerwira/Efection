@@ -2,6 +2,11 @@
 
 import Image from 'next/image'
 
+type SideImageProps = {
+  src: string
+  className?: string
+}
+
 export default function WinnerSection() {
   return (
     <section className="relative w-full overflow-hidden bg-[#3b352d]">
@@ -67,7 +72,7 @@ export default function WinnerSection() {
   )
 }
 
-function SideImage({ src, className }) {
+function SideImage({ src, className }: SideImageProps) {
   return (
     <div
       className={`hidden lg:block absolute z-20 w-36 xl:w-44 ${className}`}

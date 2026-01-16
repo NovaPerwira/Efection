@@ -1,5 +1,5 @@
 'use client';
-import HeroPage from "@/components/Hero";
+// import HeroPage from "@/components/Hero";
 import { useEffect, useState } from "react";
 import EffectionIVSection from "@/components/EffectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
@@ -123,7 +123,7 @@ export default function Home() {
   ) : (
     <>
       {/* SECTION 1 */}
-      <EffectionIVSection />
+      <EffectionIVSection animate={true} />
 
       {/* SECTION 2 */}
       <StickyZoomSection>

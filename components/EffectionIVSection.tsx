@@ -3,7 +3,24 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-export default function EffectionIVSection({animate}) {
+type EffectionIVSectionProps = {
+  animate?: boolean
+}
+
+type StatProps = {
+  value: string
+  label: string
+}
+
+type SideImageProps = {
+  src: string
+  className?: string
+  delay?: number
+}
+
+export default function EffectionIVSection({
+  animate = true,
+}: EffectionIVSectionProps) {
   return (
     <section className="relative w-full overflow-hidden bg-[#3b352d]">
       {/* Background pattern */}
@@ -89,7 +106,7 @@ export default function EffectionIVSection({animate}) {
   )
 }
 
-function Stat({ value, label }) {
+function Stat({ value, label }: StatProps) {
   return (
     <motion.div
       className="text-center"
@@ -104,7 +121,7 @@ function Stat({ value, label }) {
   )
 }
 
-function SideImage({ src, className, delay }) {
+function SideImage({ src, className, delay }: SideImageProps) {
   return (
     <motion.div
       className={`hidden lg:block absolute z-20 w-36 xl:w-44 ${className}`}

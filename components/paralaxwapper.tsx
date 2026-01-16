@@ -1,9 +1,13 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 
-export default function StickyZoomSection({ children }) {
+type StickyZoomSectionProps = {
+  children: ReactNode
+}
+
+export default function StickyZoomSection({ children }: StickyZoomSectionProps) {
   const containerRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
