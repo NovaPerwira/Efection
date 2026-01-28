@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import EffectionIVSection from "@/components/EffectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/paralaxwapper";
+import Timeline from "@/components/Timeline";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -134,6 +135,7 @@ export default function Home() {
       <section className="min-h-screen bg-black text-white flex items-center justify-center">
         <h2 className="text-4xl font-serif">Next Section</h2>
       </section>
+      <Timeline />
     </>
   )}
 </>
