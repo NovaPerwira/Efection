@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-type EffectionIVSectionProps = {
+type EfectionIVSectionProps = {
   animate?: boolean
 }
 
@@ -12,9 +12,9 @@ type SideImageProps = {
   rotation?: number
 }
 
-export default function EffectionIVSection({
+export default function EfectionIVSection({
   animate = true,
-}: EffectionIVSectionProps) {
+}: EfectionIVSectionProps) {
   return (
     <section className="relative w-full py-24 min-h-screen overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
       {/* --- Background Elements --- */}
@@ -65,7 +65,7 @@ export default function EffectionIVSection({
             viewport={{ once: true }}
             transition={{ delay: 0.15, duration: 0.6 }}
           >
-            EFFECTION IV
+            EFECTION IV
           </motion.h1>
 
           {/* Subtitle */}

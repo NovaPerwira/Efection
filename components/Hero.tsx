@@ -95,7 +95,7 @@ const HeroSection = () => {
           
           <RevealText delay={0.2}>
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-serif font-medium text-white mb-6 leading-[0.9]">
-              Effection<br/><span className="italic font-light text-white/90">IV</span>
+              Efection<br/><span className="italic font-light text-white/90">IV</span>
             </h1>
           </RevealText>
 

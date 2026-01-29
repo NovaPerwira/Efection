@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
+import { Grenze, Plus_Jakarta_Sans } from 'next/font/google';
+import { Bold } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +17,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const grenze = Grenze({
+  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-grenze',
+  display: 'swap',
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+  weight: "400",
+});
 
 
 
@@ -50,7 +65,7 @@ function Navbar() {
             animationFrameId = requestAnimationFrame(() => {
                 setBubblePosition({ x: e.clientX, y: e.clientY });
             });
-        };
+        };  
         const handleMouseEnter = () => setBubbleVisible(true);
         const handleMouseLeave = () => setBubbleVisible(false);
 
@@ -286,7 +301,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${grenze.variable} ${plusJakarta.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

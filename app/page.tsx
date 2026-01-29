@@ -1,17 +1,18 @@
 'use client';
 // import HeroPage from "@/components/Hero";
 import { useEffect, useState } from "react";
-import EffectionIVSection from "@/components/EffectionIVSection";
+import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/paralaxwapper";
 import Timeline from "@/components/Timeline";
+import AboutSection from "@/components/AboutUs";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isExiting, setIsExiting] = useState(false); // Controls the slide up
   
-  const fullText = "EFFECTION IV";
+  const fullText = "EFECTION IV";
 
   // 1. Typewriter Effect Logic
   useEffect(() => {
@@ -118,7 +119,7 @@ export default function Home() {
     ) : (
       <>
         {/* SECTION 1 */}
-        <EffectionIVSection animate={true} />
+        <EfectionIVSection animate={true} />
 
         {/* SECTION 2 (ZOOM) */}
         {/* Section ini ada di layer bawah (z-0) dari StickyZoomSection */}
@@ -132,11 +133,11 @@ export default function Home() {
         <section className="relative z-10 bg-black min-h-screen text-white flex items-center justify-center">
           <h2 className="text-4xl font-serif">Next Section</h2>
         </section>
-        
         {/* Timeline juga perlu relative z-10 jika backgroundnya menyatu */}
         <div className="relative z-10 bg-black">
            <Timeline />
         </div>
+        <AboutSection />
       </>
     )}
   </>
