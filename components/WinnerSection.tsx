@@ -15,25 +15,16 @@ export default function WinnerSection() {
       {/* === BACKGROUND LAYERS === */}
       
       {/* 1. Base Pattern (Floral/Damask) */}
-      <div className="absolute inset-0 z-0 opacity-30">
+      <div className="absolute inset-0 z-0 opacity-15">
         <Image
           // Ganti dengan pattern batik/floral yang sesuai jika ada
-          src="/images/1.jpg" 
+          src="/images/Hero/bg.png" 
           alt="Background Pattern"
           fill
           className="object-cover"
           priority
         />
       </div>
-
-      {/* 2. Vertical Stripes Overlay (CSS Gradient) */}
-      {/* Ini membuat efek garis-garis vertikal hijau/gelap seperti di desain */}
-      <div 
-        className="absolute inset-0 z-0 opacity-40 pointer-events-none"
-        style={{
-            background: 'repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 50, 0, 0.2) 40px, rgba(0, 50, 0, 0.2) 80px)'
-        }}
-      ></div>
 
       {/* 3. Vignette (Gelap di pinggir) */}
       <div className="absolute inset-0 z-0 bg-radial-gradient from-transparent via-transparent to-black/60 pointer-events-none"></div>
@@ -49,27 +40,27 @@ export default function WinnerSection() {
         </h2>
 
         {/* Center Frame (Mystery Box) */}
-        <div className="relative group cursor-pointer">
+        <div className="relative  cursor-pointer">
             {/* The Frame Container */}
-            <div className="w-[280px] h-[350px] md:w-[320px] md:h-[400px] bg-[#e3cd9c] relative shadow-2xl transform transition-transform duration-500 hover:scale-105">
+            <div className="w-[280px] h-[350px] md:w-[320px] md:h-[400px] relative transform transition-transform duration-500 hover:scale-105">
                 
                 {/* CSS Wood Frame Border */}
-                <div className="absolute inset-0 border-[16px] border-[#5d4037] border-ridge shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] z-20 pointer-events-none"></div>
+                <div className="absolute inset-0 z-20 pointer-events-none"></div>
                 
                 {/* Inner Pattern/Content */}
-                <div className="absolute inset-4 bg-[#d4c39c] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-4 flex items-center justify-center overflow-hidden">
                     {/* Background Pattern dalam frame */}
                      <Image
                         src="/images/subHero/border.webp"
                         alt="Inner Pattern"
                         fill
-                        className="object-cover opacity-20"
+                        className="object-cover opacity-100"
                     />
 
                     {/* Mystery Question Mark (Silhouette) */}
-                    <div className="relative z-10 text-[#5d4037] opacity-60 font-serif text-[180px] font-bold select-none mix-blend-multiply">
+                    {/* <div className="relative z-10 text-[#5d4037] opacity-60 font-serif text-[180px] font-bold select-none mix-blend-multiply">
                         ?
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -119,14 +110,14 @@ function SideImage({ src, className, rotate = 'rotate-0' }: SideImageProps) {
   return (
     <div className={`hidden lg:block absolute z-20 ${className} ${rotate} hover:z-30 transition-all duration-300 hover:scale-110`}>
       {/* Ukuran Frame */}
-      <div className="w-[180px] h-[220px] bg-[#2a1d15] relative shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+      <div className="w-[180px] h-[220px] relative ">
         
         {/* CSS Wood Frame Border */}
         {/* border-t-[#785645] memberikan efek cahaya dari atas pada kayu */}
-        <div className="absolute inset-0 border-[10px] border-[#5d4037] border-t-[#785645] border-l-[#6b4c3e] border-b-[#3e2b24] border-r-[#3e2b24] shadow-[inset_0_0_15px_rgba(0,0,0,0.6)] z-20 pointer-events-none"></div>
+        <div className="absolute inset-0 z-20 pointer-events-none"></div>
 
         {/* Image Container */}
-        <div className="absolute inset-[10px] bg-black">
+        <div className="absolute inset-[10px] ">
              <Image
                 src={src}
                 alt="Contestant"

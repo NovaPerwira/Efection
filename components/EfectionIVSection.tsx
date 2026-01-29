@@ -20,13 +20,13 @@ export default function EfectionIVSection({
       {/* --- Background Elements --- */}
       
       {/* Vertical Stripes Pattern */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
         <img src="images/Hero/bg.png" alt="" />
       
       </div>
 
       {/* Central Emblem Silhouette (Decorative Background) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] opacity-20 pointer-events-none z-0">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] pointer-events-none z-0">
          <img src="images/Hero/logo.webp" alt="" />
       </div>
 
@@ -121,9 +121,9 @@ export default function EfectionIVSection({
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           {/* Top decorative line */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-full h-[2px] bg-[#b38a3a]/50" />
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-full h-[2px] bg-white/50" />
 
-          <p className="text-[10px] uppercase tracking-widest text-[#b38a3a] mb-1">
+          <p className="text-[10px] uppercase tracking-widest text-white mb-1">
             Up to
           </p>
 
@@ -141,7 +141,7 @@ export default function EfectionIVSection({
             Rp. 13,500,000
           </h3>
 
-          <p className="text-[10px] uppercase tracking-widest text-[#8c8579] mt-1">
+          <p className="text-[10px] uppercase tracking-widest text-white mt-1">
             Prize Pool
           </p>
 
