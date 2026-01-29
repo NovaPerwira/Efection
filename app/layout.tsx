@@ -209,7 +209,7 @@ function Navbar() {
                     </div>
                     <div className="mt-8">
                         <button className="w-full bg-white text-black px-4 py-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors cta-glow">
-                            Run a light node
+                            Join Us
                         </button>
                     </div>
                 </div>
