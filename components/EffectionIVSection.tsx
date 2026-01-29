@@ -16,7 +16,7 @@ export default function EffectionIVSection({
   animate = true,
 }: EffectionIVSectionProps) {
   return (
-    <section className="relative w-full min-h-screen py-20 overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
+    <section className="relative w-full py-24 min-h-screen overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
       {/* --- Background Elements --- */}
       
       {/* Vertical Stripes Pattern */}
@@ -32,62 +32,131 @@ export default function EffectionIVSection({
 
       {/* --- Main Content --- */}
       <motion.div
-        className="relative z-10 max-w-4xl mx-auto px-4 text-center text-[#f5f1ea]"
-        initial={{ opacity: 0, y: 30 }}
+        className="
+          relative z-10
+          w-full max-w-[860px]
+          px-8 py-16
+          mt-10
+          text-center
+          text-[#f5f1ea]
+          backdrop-blur-[2px]
+        "
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
       >
         {/* Title */}
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-wider mb-2 drop-shadow-xl"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          EFFECTION IV
-        </motion.h1>
+        <div className="flex flex-col items-center justify-center leading-tight">
+          <motion.h1
+            className="
+              text-[36px]
+              sm:text-[42px]
+              md:text-[48px]
+              lg:text-[56px]
+              font-serif
+              tracking-[0.12em]
+              font-bold
+              mb-3
+              drop-shadow-lg
+            "
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+          >
+            EFFECTION IV
+          </motion.h1>
 
-        {/* Subtitle: Voices of Society */}
-        <motion.h2
-          className="text-2xl md:text-4xl font-serif text-[#e2ddd4] mb-4 tracking-wide"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          Voices of Society
-        </motion.h2>
+          {/* Subtitle */}
+          <motion.h2
+            className="
+              text-[16px]
+              sm:text-[18px]
+              md:text-[20px]
+              lg:text-[22px]
+              font-serif
+              text-[#e2ddd4]
+              tracking-wide
+            "
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            Voices of Society
+          </motion.h2>
 
-        {/* Description */}
-        <motion.p
-          className="text-sm md:text-base text-[#d4cec4] font-light tracking-widest uppercase mb-12 md:mb-16"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          Exploring Culture, Identity, and Change in a <br className="hidden md:block" />
-          Globalized World
-        </motion.p>
+          {/* Description */}
+          <motion.p
+            className="
+              text-[12px]
+              sm:text-[13px]
+              md:text-[14px]
+              text-[#d4cec4]
+              font-light
+              tracking-[0.15em]
+              mb-2
+            "
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            Exploring Culture, Identity, and Change in a
+            <br className="hidden md:block" />
+            Globalized World
+          </motion.p>
+        </div>
 
-        {/* Prize Pool Section */}
+        {/* Prize Pool */}
         <motion.div
-          className="relative inline-block py-6 px-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="
+            relative inline-flex flex-col items-center
+            px-8 py-5 leading-tight
+          "
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.5 }}
         >
-          {/* Decorative lines/brackets for prize pool */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[1px] bg-[#b38a3a]/50"></div>
-          <p className="text-xs uppercase tracking-widest text-[#b38a3a] mb-2">Up to</p>
-          <h3 className="text-3xl md:text-5xl font-bold text-white drop-shadow-md font-sans">
+          {/* Top decorative line */}
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-full h-[2px] bg-[#b38a3a]/50" />
+
+          <p className="text-[10px] uppercase tracking-widest text-[#b38a3a] mb-1">
+            Up to
+          </p>
+
+          <h3
+            className="
+              text-[30px]
+              sm:text-[34px]
+              md:text-[40px]
+              font-bold
+              text-white
+              tracking-wide
+              leading-none
+            "
+          >
             Rp. 13,500,000
           </h3>
-          <p className="text-xs uppercase tracking-widest text-[#8c8579] mt-2">Prize Pool</p>
-          
-          {/* Bottom decorative bracket simulation */}
-          <div className="mt-6 w-24 h-8 border-t-4 border-[#b38a3a]/40 rounded-t-full mx-auto transform rotate-180 opacity-50"></div>
+
+          <p className="text-[10px] uppercase tracking-widest text-[#8c8579] mt-1">
+            Prize Pool
+          </p>
+
+          {/* Bottom decorative bracket */}
+          <div className="
+            mt-3
+            w-18 h-5
+            border-t-4 border-[#b38a3a]/40
+            rounded-t-full
+            rotate-180
+            opacity-40
+          " />
         </motion.div>
       </motion.div>
+
 
       {/* --- Side Floating Images --- */}
       {/* Left Column */}
@@ -152,13 +221,3 @@ function SideImage({ src, className, delay, rotation = 0 }: SideImageProps) {
     </motion.div>
   )
 }
-
-
-
-// <Image
-//           src={src}
-//           alt="Speaker"
-//           width={200}
-//           height={300}
-//           className="absolute w-32 h-48 md:w-40 md:h-56 rounded-lg overflow-hidden border-2 border-[#b38a3a]/30 transition-all duration-500 ease-in-out hover:scale-105 hover:brightness-110 hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] cursor-pointer z-20 "
-//         />

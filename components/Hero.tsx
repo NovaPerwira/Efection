@@ -68,8 +68,7 @@ const HeroSection = () => {
     <section ref={containerRef} className="relative h-[200vh] w-full bg-black">
       
       {/* Sticky Container: Memastikan elemen tetap di viewport selama scroll di parent */}
-      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
-        
+      <div className="sticky top-0 left-0 w-full  overflow-hidden">
         {/* Layer Background (Zoom Only, Position Fixed visually) */}
         <motion.div style={{ scale: bgScale }} className="absolute inset-0 w-full h-full">
           <Image 
@@ -143,14 +142,4 @@ const HeroSection = () => {
 
 // --- Main Page Component ---
 
-export default function HeroPage() {
-  return (
-    <main className="bg-[#0a0a0a] text-white font-sans selection:bg-orange-600 selection:text-white">
-      <HeroSection />
-      {/* Spacer di bawah ini hanya untuk membuktikan efek scroll selesai dengan mulus */}
-      <div className="h-screen flex items-center justify-center bg-black text-white/20">
-        <p>Next Section Content Here...</p>
-      </div>
-    </main>
-  );
-}
+export default HeroSection;

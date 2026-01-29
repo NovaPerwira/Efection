@@ -107,39 +107,39 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 export default function Home() {
   const [loading, setLoading] = useState(true);
   
-    const handleLoadingComplete = () => {
-      setLoading(false);
-    };
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
 
   return (
-    // <>
-    //   {loading && <SplashScreen onComplete={handleLoadingComplete} />}
-    //   {!loading && <WinnerSection />}
-    
-    // </>
-
    <>
-  {loading ? (
-    <SplashScreen onComplete={handleLoadingComplete} />
-  ) : (
-    <>
-      {/* SECTION 1 */}
-      <EffectionIVSection animate={true} />
+    {loading ? (
+      <SplashScreen onComplete={handleLoadingComplete} />
+    ) : (
+      <>
+        {/* SECTION 1 */}
+        <EffectionIVSection animate={true} />
 
-      {/* SECTION 2 */}
-      <StickyZoomSection>
-        <WinnerSection />
-      </StickyZoomSection>
+        {/* SECTION 2 (ZOOM) */}
+        {/* Section ini ada di layer bawah (z-0) dari StickyZoomSection */}
+        <StickyZoomSection>
+          <WinnerSection />
+        </StickyZoomSection>
 
-      {/* SECTION AFTER ZOOM */}
-      <section className="min-h-screen bg-black text-white flex items-center justify-center">
-        <h2 className="text-4xl font-serif">Next Section</h2>
-      </section>
-      <Timeline />
-    </>
-  )}
-</>
-
+        {/* SECTION 3 (NEXT SECTION) */}
+        {/* PENTING: Tambahkan 'relative z-10 bg-black' */}
+        {/* 'bg-black' wajib ada agar transparan tidak tembus pandang */}
+        <section className="relative z-10 bg-black min-h-screen text-white flex items-center justify-center">
+          <h2 className="text-4xl font-serif">Next Section</h2>
+        </section>
+        
+        {/* Timeline juga perlu relative z-10 jika backgroundnya menyatu */}
+        <div className="relative z-10 bg-black">
+           <Timeline />
+        </div>
+      </>
+    )}
+  </>
   );
 }
     

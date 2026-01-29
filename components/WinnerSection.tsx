@@ -10,7 +10,7 @@ type SideImageProps = {
 
 export default function WinnerSection() {
   return (
-    <section className="relative w-full  overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
+    <section className="relative w-full py-10 overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
       
       {/* === BACKGROUND LAYERS === */}
       
@@ -60,7 +60,7 @@ export default function WinnerSection() {
                 <div className="absolute inset-4 bg-[#d4c39c] flex items-center justify-center overflow-hidden">
                     {/* Background Pattern dalam frame */}
                      <Image
-                        src="/images/1.jpg"
+                        src="/images/subHero/border.webp"
                         alt="Inner Pattern"
                         fill
                         className="object-cover opacity-20"
@@ -84,28 +84,28 @@ export default function WinnerSection() {
       
       {/* Kiri Atas */}
       <SideImage 
-        src="/images/1.jpg" 
+        src="/images/subHero/psrt 1.webp" 
         className="top-10 left-4 md:left-10 lg:left-20 scale-75 md:scale-90"
         rotate="-rotate-2"
       />
 
       {/* Kiri Bawah */}
       <SideImage 
-        src="/images/1.jpg" 
+        src="/images/subHero/psrt 4.webp" 
         className="bottom-10 left-8 md:left-16 lg:left-32 scale-90 md:scale-100"
         rotate="rotate-3"
       />
 
       {/* Kanan Atas */}
       <SideImage 
-        src="/images/1.jpg" 
+        src="/images/subHero/psrt 2.webp" 
         className="top-16 right-4 md:right-10 lg:right-24 scale-75 md:scale-90"
         rotate="rotate-2"
       />
 
       {/* Kanan Bawah */}
       <SideImage 
-        src="/images/1.jpg" 
+        src="/images/subHero/psrt 3.webp" 
         className="bottom-14 right-8 md:right-16 lg:right-36 scale-90 md:scale-100"
         rotate="-rotate-3"
       />
