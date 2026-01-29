@@ -127,7 +127,7 @@ export default function AboutSection() {
               src="/images/aboutus/photo.png"
               alt="Effection IV event"
               fill
-              className="object-cover rounded-md shadow-2xl shadow-black/40"
+              className="object-cover rounded-md shadow-2xl shadow-black/100"
               priority
             />
           </motion.div>

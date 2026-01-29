@@ -6,6 +6,7 @@ import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/paralaxwapper";
 import Timeline from "@/components/Timeline";
 import AboutSection from "@/components/AboutUs";
+import FAQ from "@/components/FAQ";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -137,6 +138,7 @@ export default function Home() {
         <div className="relative z-10 bg-black">
            <Timeline />
         </div>
+        <FAQ />
         <AboutSection />
       </>
     )}
