@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/paralaxwapper";
-import Timeline from "@/components/Timeline";
 import AboutSection from "@/components/AboutUs";
 import FAQ from "@/components/FAQ";
-
+import Competition from "@/components/Competition";
+import Timeline from "@/components/Timeline";
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
@@ -138,6 +138,7 @@ export default function Home() {
         <div className="relative z-10 bg-black">
            <Timeline />
         </div>
+        <Competition />
         <FAQ />
         <AboutSection />
       </>

@@ -43,11 +43,11 @@ export default function AboutSection() {
         {/* ================= MOBILE STACK ================= */}
         <div className="md:hidden space-y-12 text-center">
 
-          <motion.h1 className="h1" variants={fadeUp}>
+          <motion.h1 className="h1 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]" variants={fadeUp}>
             ABOUT US
           </motion.h1>
 
-          <motion.h2
+          <motion.h2 className="text-[#FFBE00] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
             style={{
               fontFamily: 'Grenze, serif',
@@ -58,28 +58,28 @@ export default function AboutSection() {
             English Festival Competition
           </motion.h2>
 
-          <motion.h4 className="h4 text-[#2a241d]" variants={fadeUp}>
+          <motion.h4 className="h4 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]" variants={fadeUp}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et
           </motion.h4>
 
-          <motion.div className="space-y-8" variants={fadeUp}>
+          <motion.div className="space-y-8 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]" variants={fadeUp}>
             <div>
-              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px' }}>
+              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px', color:"#FFBE00"}}>
                 Location
               </h3>
               <h5 className="h5">Instiki</h5>
             </div>
 
             <div>
-              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px' }}>
+              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px', color:"#FFBE00"}}>
                 Prize Pool
               </h3>
               <h5 className="h5">IDR. 13,500,000</h5>
             </div>
 
             <div>
-              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px' }}>
+              <h3 style={{ fontFamily: 'Grenze, serif', fontSize: '32px', color:"#FFBE00" }}>
                 Range
               </h3>
               <h5 className="h5 leading-snug">
@@ -94,7 +94,7 @@ export default function AboutSection() {
 
           {/* ABOUT US */}
           <motion.h1
-            className="h1 col-start-5 col-span-5"
+            className="h1 col-start-5 col-span-5 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
           >
             ABOUT US
@@ -102,7 +102,7 @@ export default function AboutSection() {
 
           {/* Subtitle */}
           <motion.h2
-            className="col-start-2 col-span-8"
+            className="col-start-2 col-span-8 text-[#FFBE00] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
             style={{
               fontFamily: 'Grenze, serif',
@@ -134,7 +134,7 @@ export default function AboutSection() {
 
           {/* Description */}
           <motion.h4
-            className="h4 col-start-2 col-span-8 text-[#2a241d]"
+            className="h4 col-start-2 col-span-8 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -143,7 +143,7 @@ export default function AboutSection() {
 
           {/* Labels */}
           <motion.div
-            className="col-start-2 col-span-7 grid grid-cols-7"
+            className="col-start-2 col-span-7 grid grid-cols-7 text-[#FFBE00] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
           >
             <h3 className="col-span-2" style={{ fontFamily: 'Grenze, serif', fontSize: '50px' }}>
@@ -158,16 +158,22 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Values */}
-          <motion.div
-            className="col-start-2 col-span-9 grid grid-cols-9 text-[#2a241d]"
+          <motion.h4
+            className="col-start-2 col-span-9 grid grid-cols-9 text-[#FFFEFE] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
           >
-            <h5 className="col-span-2 h5">Instiki</h5>
-            <h5 className="col-start-4 col-span-2 h5">IDR. 13,500,000</h5>
-            <h5 className="col-start-7 col-span-3 h5 leading-snug">
-              Middle School, High School, Open Category
-            </h5>
-          </motion.div>
+            <div className="col-span-3">Instiki Campus</div>
+            <div className="col-start-4 col-span-3">IDR. 13,500,000</div>
+            <div className="col-start-7 col-span-3 leading-snug">
+                <ul className="list-disc list-inside space-y-1">
+                    <li>Middle School</li>
+                    <li>High School</li>
+                    <li>Varsity</li>
+                    <li>Open Category</li>
+                </ul>
+            </div>
+
+          </motion.h4>
 
         </div>
       </motion.div>

@@ -1,157 +1,133 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const faqs = [
-  {
-    title: 'Lorem ipsum',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
-  {
-    title: 'Lorem ipsum',
-    content:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  },
-  {
-    title: 'Lorem ipsum',
-    content:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-  },
-];
-
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <section className="relative bg-[#C09B6F] min-h-screen overflow-hidden text-[#1b1b1b]">
+    <section className="relative bg-[#C09B6F] overflow-hidden py-24">
 
-      {/* 🔁 TILING BACKGROUND IMAGE */}
+      {/* TILED BACKGROUND */}
       <div
-        className="absolute inset-0 bg-repeat bg-left-top"
+        className="absolute inset-0 bg-repeat"
         style={{
           backgroundImage: "url('/images/FAQ/bg_overlay.png')",
-          backgroundSize: '300px 300px', // adjust tile size
+          backgroundSize: '280px 280px',
         }}
       />
-
-      {/* 🎨 COLOR OVERLAY */}
-      <div className="absolute inset-0 bg-[#C09B6F]/20" />
+      <div className="absolute inset-0 bg-[#C09B6F]/30" />
 
       {/* CONTENT */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-6 py-24"
+        className="relative z-10 max-w-7xl mx-auto px-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.15 }}
       >
-        <div className="grid grid-cols-12 gap-y-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
 
-          {/* 1️⃣ TITLE */}
-          <motion.h2
-            className="col-start-4 col-span-8 text-right"
-            variants={fadeUp}
-            style={{
-              fontFamily: 'Grenze, serif',
-              fontSize: '80px',
-              lineHeight: '1.1',
-            }}
-          >
-            Frequently Asked Question
-          </motion.h2>
-
-          {/* 2️⃣ DESCRIPTION */}
-          <motion.h4
-            className="col-start-6 col-span-6 text-right text-[#2a241d]"
-            variants={fadeUp}
-          >
-            Find answers to commonly asked questions about our competitions
-          </motion.h4>
-
-          {/* 3️⃣ IMAGE */}
+          {/* LEFT IMAGE — DESKTOP ONLY */}
           <motion.div
-            className="col-span-4 flex justify-center"
             variants={fadeUp}
+            className="hidden md:block md:col-span-4"
           >
-            <div className="relative w-[299px] h-[374px]">
-              <Image
-                src="/images/faq/content.png"
-                alt="FAQ visual"
-                fill
-                className="object-cover rounded-xl shadow-2xl shadow-black/100"
-              />
-            </div>
+            <img
+              src="/images/FAQ/content.png"
+              alt="FAQ"
+              className="w-[600px] h-[635px] rounded-xl object-cover shadow-xl"
+            />
           </motion.div>
 
-          {/* 4️⃣ FAQ CHIPS */}
-          <motion.div
-            className="col-start-5 col-span-7 space-y-4"
-            variants={fadeUp}
-          >
-            {faqs.map((faq, index) => {
-              const isOpen = openIndex === index;
+          {/* RIGHT CONTENT */}
+          <div className="col-span-full md:col-span-8 text-right">
 
-              return (
-                <div
-                  key={index}
-                  className="rounded-xl bg-[#F4D35E] shadow-md overflow-hidden"
-                >
-                  {/* CHIP HEADER */}
-                  <button
-                    onClick={() =>
-                      setOpenIndex(isOpen ? null : index)
-                    }
-                    className="w-full flex items-center justify-between px-6 py-4"
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'Grenze, serif',
-                        fontSize: '32px',
-                      }}
-                    >
-                      {faq.title}
-                    </h3>
+            {/* TITLE */}
+            <motion.h1
+              variants={fadeUp}
+              className="header-shadow mb-4 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              style={{
+                fontFamily: 'Grenze, serif',
+                fontSize: '80px',
+                color: '#fff',
+              }}
+            >
+              Frequently Asked Question
+            </motion.h1>
 
-                    {/* ARROW */}
-                    <motion.span
-                      animate={{ rotate: isOpen ? 90 : 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="text-2xl font-semibold"
-                    >
-                      &gt;
-                    </motion.span>
-                  </button>
+            {/* SUBTITLE */}
+            <motion.h4
+              variants={fadeUp}
+              className="text-white/90 mb-10 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+            >
+              Find answers to commonly asked questions about our competitions
+            </motion.h4>
 
-                  {/* CONTENT */}
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-6 pb-23 text-[#2a241d]">
-                          {faq.content}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </motion.div>
+            {/* FAQ CHIPS */}
+            <motion.div
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.12 } },
+              }}
+              className="space-y-4"
+            >
+              <FAQItem />
+              <FAQItem />
+              <FAQItem />
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
+  );
+}
+
+/* ================= FAQ ITEM ================= */
+
+function FAQItem() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="bg-[#F4D35E] rounded-xl shadow-md overflow-hidden"
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-6 py-4 text-left"
+      >
+        <h3 className="text-[#3b2f1e] text-lg md:text-xl font-semibold ">
+          Lorem Ipsum
+        </h3>
+
+        <motion.span
+          animate={{ rotate: open ? 90 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="text-2xl"
+        >
+          &gt;
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="px-6 pb-4 text-[#3b2f1e] text-sm md:text-base"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Sed do eiusmod tempor incididunt ut labore.
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
