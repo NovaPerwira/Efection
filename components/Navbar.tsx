@@ -231,9 +231,11 @@ export default function Navbar() {
                     animate={{ x: 0 }}
                     exit={{ x: '100%' }}
                     transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                    className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#111] shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
+                    className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#3b352d]/85 shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
                 >
-                    <div className="flex justify-between items-center mb-10">
+                    {/* <div className="absolute -z-40 inset-0 bg-black/40" /> */}
+
+                    <div className="flex justify-between  items-center mb-10">
                         <h2 className="text-2xl font-bold text-white tracking-tight">Efection</h2>
                         <button 
                             onClick={() => setMobileMenuOpen(false)} 
@@ -242,6 +244,7 @@ export default function Navbar() {
                             <CloseIcon />
                         </button>
                     </div>
+                    
 
                     <div className="space-y-2">
                         {['Hero', 'About', 'Competition', 'Join Us'].map((item, idx) => (
