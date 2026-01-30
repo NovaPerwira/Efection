@@ -85,7 +85,7 @@ export default function EfectionIVSection({
           <motion.p
             className="
               text-sm
-              text-[#d4cec4]
+              text-white
               font-light
               tracking-[0.15em]
               mb-2

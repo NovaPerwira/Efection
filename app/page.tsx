@@ -1,6 +1,7 @@
 'use client';
 // import HeroPage from "@/components/Hero";
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion'
 import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/StickyZoom";
@@ -12,7 +13,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isExiting, setIsExiting] = useState(false); // Controls the slide up
-  
+
   const fullText = "EFECTION IV";
 
   // 1. Typewriter Effect Logic
@@ -39,7 +40,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           return 100;
         }
         // Random increment logic
-        const increment = Math.floor(Math.random() * 5) + 2; 
+        const increment = Math.floor(Math.random() * 5) + 2;
         return Math.min(prev + increment, 100);
       });
     }, 50);
@@ -54,16 +55,15 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
       setTimeout(() => {
         setIsExiting(true);
         // Trigger onComplete after the CSS transition finishes
-        setTimeout(onComplete, 1000); 
+        setTimeout(onComplete, 1000);
       }, 800);
     }
   }, [progress, onComplete]);
 
   return (
-    <div 
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-transform duration-1000 ease-in-out ${
-        isExiting ? '-translate-y-full' : 'translate-y-0'
-      }`}
+    <div
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-transform duration-1000 ease-in-out ${isExiting ? '-translate-y-full' : 'translate-y-0'
+        }`}
       style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-main)' }}
     >
       {/* Text Container with Typewriter */}
@@ -79,12 +79,12 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       {/* Progress Bar Container */}
       <div className="w-64 md:w-96 h-1.5 rounded-full overflow-hidden bg-gray-800 relative">
-        <div 
+        <div
           className="h-full transition-all duration-75 ease-out"
-          style={{ 
+          style={{
             width: `${progress}%`,
             backgroundColor: 'var(--color-primary)',
-            boxShadow: '0 0 20px var(--color-primary-glow)' 
+            boxShadow: '0 0 20px var(--color-primary-glow)'
           }}
         />
       </div>
@@ -108,42 +108,51 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  
+
   const handleLoadingComplete = () => {
     setLoading(false);
   };
 
+  // Define the content for the "Next Section" that will parallax up
+  const NextSectionContent = (
+    <div className="absolute inset-0 opacity-100 pointer-events-none">
+        <img src="images/Hero/bg.png" alt="" />
+      
+      <div className="text-center text-white">
+        <p className="text-[#C09B6F] font-serif italic text-xl mb-4">The Journey Continues</p>
+        <h2 className="text-4xl md:text-6xl font-serif">The Results</h2>
+      </div>
+    </div>
+  );
+
   return (
-   <>
-    {loading ? (
-      <SplashScreen onComplete={handleLoadingComplete} />
-    ) : (
-      <>
-        {/* SECTION 1 */}
-        <EfectionIVSection animate={true} />
+    <>
+      {loading ? (
+        <SplashScreen onComplete={handleLoadingComplete} />
+      ) : (
+        <>
+          {/* SECTION 1 */}
+          <EfectionIVSection animate={true} />
 
-        {/* SECTION 2 (ZOOM) */}
-        {/* Section ini ada di layer bawah (z-0) dari StickyZoomSection */}
-        <StickyZoomSection>
-          <WinnerSection />
-        </StickyZoomSection>
+          {/* SECTION 2 (ZOOM + TRANSITION) */}
+          {/* We pass the 'Next Section' content as a prop to synchronized the animation */}
+          <StickyZoomSection nextSection={NextSectionContent}>
+            <WinnerSection />
+          </StickyZoomSection>
 
-        {/* SECTION 3 (NEXT SECTION) */}
-        {/* PENTING: Tambahkan 'relative z-10 bg-black' */}
-        {/* 'bg-black' wajib ada agar transparan tidak tembus pandang */}
-        <section className="relative z-10 bg-black min-h-screen text-white flex items-center justify-center">
-          <h2 className="text-4xl font-serif">Next Section</h2>
-        </section>
-        {/* Timeline juga perlu relative z-10 jika backgroundnya menyatu */}
-        <div className="relative z-10 bg-black">
-           <Timeline />
-        </div>
-        <Competition />
-        <FAQ />
-        <AboutSection />
-      </>
-    )}
-  </>
+          {/* SECTION 3 & Others */}
+          {/* These render naturally AFTER the sticky section is done */}
+          <div className="relative z-10 bg-black">
+            {/* Ensure Timeline background blends seamlessly */}
+            <div className="relative pt-20">
+              <Timeline />
+            </div>
+            <Competition />
+            <FAQ />
+            <AboutSection />
+          </div>
+        </>
+      )}
+    </>
   );
 }
-    
