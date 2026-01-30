@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Grenze, Plus_Jakarta_Sans } from 'next/font/google';
 import { Bold } from "lucide-react";
+import Navbar from '@/components/Navbar';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,186 +53,187 @@ const HamburgerIcon = () => (
     </svg>
 );
 
-function Navbar() {
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isAnnouncementOpen, setAnnouncementOpen] = useState(true);
-    const [bubblePosition, setBubblePosition] = useState({ x: 0, y: 0 });
-    const [isBubbleVisible, setBubbleVisible] = useState(false);
-
-    useEffect(() => {
-        let animationFrameId: number | null = null;
-        const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            animationFrameId = requestAnimationFrame(() => {
-                setBubblePosition({ x: e.clientX, y: e.clientY });
-            });
-        };  
-        const handleMouseEnter = () => setBubbleVisible(true);
-        const handleMouseLeave = () => setBubbleVisible(false);
-
-        document.body.addEventListener('mousemove', handleMouseMove);
-        document.body.addEventListener('mouseenter', handleMouseEnter);
-        document.body.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            document.body.removeEventListener('mousemove', handleMouseMove);
-            document.body.removeEventListener('mouseenter', handleMouseEnter);
-            document.body.removeEventListener('mouseleave', handleMouseLeave);
-        };
-    }, []);
-
-    // Menghitung padding atas untuk konten utama berdasarkan visibilitas announcement bar
-    useEffect(() => {
-        const mainContent = document.querySelector('main');
-        if (mainContent) {
-            if (isAnnouncementOpen) {
-                mainContent.style.paddingTop = '10rem'; // Padding saat ada announcement
-            } else {
-                mainContent.style.paddingTop = '6.5rem'; // Padding saat tidak ada announcement
-            }
-        }
-    }, [isAnnouncementOpen]);
-
-
-    return (
-        <>
-            <div
-                style={{
-                    position: 'fixed',
-                    borderRadius: '9999px',
-                    background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
-                    pointerEvents: 'none',
-                    transform: 'translate(-50%, -50%)',
-                    transition: 'opacity 0.3s ease',
-                    opacity: isBubbleVisible ? 1 : 0,
-                    zIndex: 9999,
-                    width: '50px',
-                    height: '50px',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    left: `${bubblePosition.x}px`,
-                    top: `${bubblePosition.y}px`,
-                }}
-            />
-            <header className="fixed top-0 left-0 right-0 z-50 ">
-                {isAnnouncementOpen && (
-                    <div className="relative flex items-center justify-center w-full rounded-b-full p-2 text-center text-sm mb border border-white/10 shadow-lg shadow-black/20 backdrop-blur-md"
-                        style={{
-                            backgroundImage: "url('/images/Hero/Header.png')",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                        }}>
-                        <span className="bg-white/10 text-black text-xs font-semibold px-2 py-1 rounded-full mr-3">Announcement</span>
-                        <p className="text-black hidden sm:inline">Unveiling LayerEdge's fresh look with our expanding vision!</p>
-                        <a href="#" className="text-black font-semibold ml-2 underline">Read more &rarr;</a>
-                        <button onClick={() => setAnnouncementOpen(false)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-black hover:text-gray-800">
-                            <CloseIcon />
-                        </button>
-                    </div>
-                )}
-                <nav className="relative flex mt-4 items-center justify-between w-full max-w-4xl mx-auto backdrop-blur-lg border border-white/10 rounded-full h-16 px-6"
-                style={{
-                            backgroundImage: "url('/images/Hero/Header.png')",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                        }}>
-                    
-                    <div className="relative z-10 flex-shrink-0">
-                        <a href="#" className="text-2xl font-bold text-black">Efection</a>
-                    </div>
-                    <div className="relative z-10 flex items-center h-full px-6">
-                      {/* LEFT MENU */}
-    <div className="hidden md:flex items-center space-x-2 flex-1 justify-start">
-      {['Hero', 'About'].map((item) => (
-        <a
-          key={item}
-          href="#"
-          className="
-            text-black
-            hover:bg-black/10
-            px-3 py-2
-            rounded-full
-            text-sm
-            font-medium
-            transition-colors
-          "
-        >
-          {item}
-        </a>
-      ))}
-    </div>
-
-    {/* CENTER LOGO */}
-    <div className="flex-shrink-0">
-      <img
-        src="/images/Hero/nav-logo.png"
-        alt="Efection Logo"
-        className="h-9 w-auto object-contain"
-      />
-    </div>
-
-    {/* RIGHT MENU + CTA */}
-    <div className="hidden md:flex items-center space-x-3 flex-1 justify-end">
-      {['Competition'].map((item) => (
-        <a
-          key={item}
-          href="#"
-          className="
-            text-black
-            hover:bg-black/10
-            px-3 py-2
-            rounded-full
-            text-sm
-            font-medium
-            transition-colors
-          "
-        >
-          {item}
-        </a>
-      ))}
+// function Navbar() {
+//     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+//     const [isAnnouncementOpen, setAnnouncementOpen] = useState(true);
+//     const [bubblePosition, setBubblePosition] = useState({ x: 0, y: 0 });
+//     const [isBubbleVisible, setBubbleVisible] = useState(false);
 
     
- </div>
+//     useEffect(() => {
+//         let animationFrameId: number | null = null;
+//         const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
+//             if (animationFrameId) cancelAnimationFrame(animationFrameId);
+//             animationFrameId = requestAnimationFrame(() => {
+//                 setBubblePosition({ x: e.clientX, y: e.clientY });
+//             });
+//         };  
+//         const handleMouseEnter = () => setBubbleVisible(true);
+//         const handleMouseLeave = () => setBubbleVisible(false);
+
+//         document.body.addEventListener('mousemove', handleMouseMove);
+//         document.body.addEventListener('mouseenter', handleMouseEnter);
+//         document.body.addEventListener('mouseleave', handleMouseLeave);
+
+//         return () => {
+//             if (animationFrameId) cancelAnimationFrame(animationFrameId);
+//             document.body.removeEventListener('mousemove', handleMouseMove);
+//             document.body.removeEventListener('mouseenter', handleMouseEnter);
+//             document.body.removeEventListener('mouseleave', handleMouseLeave);
+//         };
+//     }, []);
+
+//     // Menghitung padding atas untuk konten utama berdasarkan visibilitas announcement bar
+//     useEffect(() => {
+//         const mainContent = document.querySelector('main');
+//         if (mainContent) {
+//             if (isAnnouncementOpen) {
+//                 mainContent.style.paddingTop = '10rem'; // Padding saat ada announcement
+//             } else {
+//                 mainContent.style.paddingTop = '6.5rem'; // Padding saat tidak ada announcement
+//             }
+//         }
+//     }, [isAnnouncementOpen]);
+
+
+//     return (
+//         <>
+//             <div
+//                 style={{
+//                     position: 'fixed',
+//                     borderRadius: '9999px',
+//                     background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
+//                     pointerEvents: 'none',
+//                     transform: 'translate(-50%, -50%)',
+//                     transition: 'opacity 0.3s ease',
+//                     opacity: isBubbleVisible ? 1 : 0,
+//                     zIndex: 9999,
+//                     width: '50px',
+//                     height: '50px',
+//                     border: '1px solid rgba(255, 255, 255, 0.2)',
+//                     left: `${bubblePosition.x}px`,
+//                     top: `${bubblePosition.y}px`,
+//                 }}
+//             />
+//             <header className="fixed top-0 left-0 right-0 z-50 ">
+//                 {isAnnouncementOpen && (
+                    // <div className="relative flex items-center justify-center w-full rounded-b-full p-2 text-center text-sm mb border border-white/10 shadow-lg shadow-black/20 backdrop-blur-md"
+                    //     style={{
+                    //         backgroundImage: "url('/images/Hero/Header.png')",
+                    //         backgroundSize: "cover",
+                    //         backgroundPosition: "center",
+                    //     }}>
+                    //     <span className="bg-white/10 text-black text-xs font-semibold px-2 py-1 rounded-full mr-3">Announcement</span>
+                    //     <p className="text-black hidden sm:inline">Unveiling LayerEdge's fresh look with our expanding vision!</p>
+                    //     <a href="#" className="text-black font-semibold ml-2 underline">Read more &rarr;</a>
+                    //     <button onClick={() => setAnnouncementOpen(false)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-black hover:text-gray-800">
+                    //         <CloseIcon />
+                    //     </button>
+                    // </div>
+//                 )}
+//                 <nav className="relative flex mt-4 items-center justify-between w-full max-w-4xl mx-auto backdrop-blur-lg border border-white/10 rounded-full h-16 px-6"
+//                 style={{
+//                             backgroundImage: "url('/images/Hero/Header.png')",
+//                             backgroundSize: "cover",
+//                             backgroundPosition: "center",
+//                         }}>
+                    
+//                     <div className="relative z-10 flex-shrink-0">
+//                         <a href="#" className="text-2xl font-bold text-black">Efection</a>
+//                     </div>
+//                     <div className="relative z-10 flex items-center h-full px-6">
+//                       {/* LEFT MENU */}
+//                     <div className="hidden md:flex items-center space-x-2 flex-1 justify-start">
+//                     {['Hero', 'About'].map((item) => (
+//                         <a
+//                         key={item}
+//                         href="#"
+//                         className="
+//                             text-black
+//                             hover:bg-black/10
+//                             px-3 py-2
+//                             rounded-full
+//                             text-sm
+//                             font-medium
+//                             transition-colors
+//                         "
+//                         >
+//                         {item}
+//                         </a>
+//                     ))}
+//                     </div>
+
+//                     {/* CENTER LOGO */}
+//                     <div className="flex-shrink-0">
+//                     <img
+//                         src="/images/Hero/nav-logo.png"
+//                         alt="Efection Logo"
+//                         className="h-9 w-auto object-contain"
+//                     />
+//                     </div>
+
+//                     {/* RIGHT MENU + CTA */}
+//                     <div className="hidden md:flex items-center space-x-3 flex-1 justify-end">
+//                     {['Competition'].map((item) => (
+//                         <a
+//                         key={item}
+//                         href="#"
+//                         className="
+//                             text-black
+//                             hover:bg-black/10
+//                             px-3 py-2
+//                             rounded-full
+//                             text-sm
+//                             font-medium
+//                             transition-colors
+//                         "
+//                         >
+//                         {item}
+//                         </a>
+//                     ))}
+
+                    
+//                 </div>
                             
 
-                    </div>
-                    <div className="relative z-10 hidden md:block">
-                        <button className="bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors cta-glow">
-                            <Link href="/login">Join us</Link>
-                        </button>
-                    </div>
-                    <div className="relative z-10 flex md:hidden">
-                        <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} type="button" className="inline-flex items-center justify-center p-2 rounded-full text-gray-300 hover:bg-white/10 hover:text-white focus:outline-none">
-                            <span className="sr-only">Open main menu</span>
-                            {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        </button>
-                    </div>
-                </nav>
-            </header>
-            <div className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                <div onClick={() => setMobileMenuOpen(false)} className="absolute inset-0 bg-black bg-opacity-50"></div>
-                <div className="relative h-full w-4/5 max-w-sm bg-gray-900 shadow-xl p-6">
-                    <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-xl font-bold text-white">Menu</h2>
-                        <button onClick={() => setMobileMenuOpen(false)} className="p-2 -mr-2 text-gray-300 hover:text-white">
-                            <CloseIcon />
-                        </button>
-                    </div>
-                    <div className="space-y-1">
-                        {['Hero', 'About', 'Competition', 'Join Us'].map((item) => (
-                             <a key={item} href="#" className="text-gray-300 block px-3 py-3 rounded-md text-base font-medium hover:bg-white/10 hover:text-white">{item}</a>
-                        ))}
-                    </div>
-                    <div className="mt-8">
-                        <button className="w-full bg-white text-black px-4 py-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors cta-glow">
-                            Join Us
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-}
+//                     </div>
+//                     <div className="relative z-10 hidden md:block">
+//                         <button className="bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors cta-glow">
+//                             <Link href="/login">Join us</Link>
+//                         </button>
+//                     </div>
+//                     <div className="relative z-10 flex md:hidden">
+//                         <button onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} type="button" className="inline-flex items-center justify-center p-2 rounded-full text-gray-300 hover:bg-white/10 hover:text-white focus:outline-none">
+//                             <span className="sr-only">Open main menu</span>
+//                             {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+//                         </button>
+//                     </div>
+//                 </nav>
+//             </header>
+//             <div className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+//                 <div onClick={() => setMobileMenuOpen(false)} className="absolute inset-0 bg-black bg-opacity-50"></div>
+//                 <div className="relative h-full w-4/5 max-w-sm bg-gray-900 shadow-xl p-6">
+//                     <div className="flex justify-between items-center mb-8">
+//                         <h2 className="text-xl font-bold text-white">Menu</h2>
+//                         <button onClick={() => setMobileMenuOpen(false)} className="p-2 -mr-2 text-gray-300 hover:text-white">
+//                             <CloseIcon />
+//                         </button>
+//                     </div>
+//                     <div className="space-y-1">
+//                         {['Hero', 'About', 'Competition', 'Join Us'].map((item) => (
+//                              <a key={item} href="#" className="text-gray-300 block px-3 py-3 rounded-md text-base font-medium hover:bg-white/10 hover:text-white">{item}</a>
+//                         ))}
+//                     </div>
+//                     <div className="mt-8">
+//                         <button className="w-full bg-white text-black px-4 py-3 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors cta-glow">
+//                             Join Us
+//                         </button>
+//                     </div>
+//                 </div>
+//             </div>
+//         </>
+//     );
+// }
 
 function ScrollProgress() {
     const [scrollPercentage, setScrollPercentage] = useState(0);
