@@ -50,10 +50,7 @@ export default function EfectionIVSection({
         <div className="flex flex-col items-center justify-center leading-tight">
           <motion.h1
             className="
-              text-[36px]
-              sm:text-[42px]
-              md:text-[48px]
-              lg:text-[56px]
+              text-5xl
               font-serif
               tracking-[0.12em]
               font-bold
@@ -71,10 +68,7 @@ export default function EfectionIVSection({
           {/* Subtitle */}
           <motion.h2
             className="
-              text-[16px]
-              sm:text-[18px]
-              md:text-[20px]
-              lg:text-[22px]
+              text-2xl
               font-serif
               text-[#e2ddd4]
               tracking-wide
@@ -90,9 +84,7 @@ export default function EfectionIVSection({
           {/* Description */}
           <motion.p
             className="
-              text-[12px]
-              sm:text-[13px]
-              md:text-[14px]
+              text-sm
               text-[#d4cec4]
               font-light
               tracking-[0.15em]

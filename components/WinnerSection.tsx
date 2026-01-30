@@ -5,7 +5,7 @@ import Image from 'next/image'
 type SideImageProps = {
   src: string
   className?: string
-  rotate?: string // Tambahan untuk sedikit rotasi agar lebih natural
+  rotate?: string 
 }
 
 export default function WinnerSection() {
@@ -57,10 +57,7 @@ export default function WinnerSection() {
                         className="object-cover opacity-100"
                     />
 
-                    {/* Mystery Question Mark (Silhouette) */}
-                    {/* <div className="relative z-10 text-[#5d4037] opacity-60 font-serif text-[180px] font-bold select-none mix-blend-multiply">
-                        ?
-                    </div> */}
+                 
                 </div>
             </div>
 
@@ -76,28 +73,28 @@ export default function WinnerSection() {
       {/* Kiri Atas */}
       <SideImage 
         src="/images/subHero/psrt 1.webp" 
-        className="top-10 left-4 md:left-10 lg:left-20 scale-75 md:scale-90"
+        className="top-10 left-0 scale-75 md:scale-90"
         rotate="-rotate-2"
       />
 
       {/* Kiri Bawah */}
       <SideImage 
         src="/images/subHero/psrt 4.webp" 
-        className="bottom-10 left-8 md:left-16 lg:left-32 scale-90 md:scale-100"
+        className="bottom-10 left-0  scale-90 md:scale-100"
         rotate="rotate-3"
       />
 
       {/* Kanan Atas */}
       <SideImage 
         src="/images/subHero/psrt 2.webp" 
-        className="top-16 right-4 md:right-10 lg:right-24 scale-75 md:scale-90"
+        className="top-16 right-10 scale-75 md:scale-90"
         rotate="rotate-2"
       />
 
       {/* Kanan Bawah */}
       <SideImage 
         src="/images/subHero/psrt 3.webp" 
-        className="bottom-14 right-8 md:right-16 lg:right-36 scale-90 md:scale-100"
+        className="bottom-14 right-10 md:right-16 lg:right-36 scale-90 md:scale-100"
         rotate="-rotate-3"
       />
 

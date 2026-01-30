@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
-import StickyZoomSection from "@/components/paralaxwapper";
+import StickyZoomSection from "@/components/StickyZoom";
 import AboutSection from "@/components/AboutUs";
 import FAQ from "@/components/FAQ";
 import Competition from "@/components/Competition";
