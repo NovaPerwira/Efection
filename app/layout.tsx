@@ -273,7 +273,7 @@ function ScrollProgress() {
                     cx="40"
                     cy="40"
                     r={radius}
-                    stroke="white"
+                    stroke="#FEDB73"
                     strokeWidth="4"
                     fill="transparent"
                     strokeDasharray={circumference}
