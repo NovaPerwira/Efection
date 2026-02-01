@@ -20,7 +20,7 @@ export default function EfectionIVSection({
       {/* --- Background Elements --- */}
       
       {/* Vertical Stripes Pattern */}
-      <div className="absolute inset-0 opacity-15 pointer-events-none">
+      <div className="absolute w-full h-full inset-0 opacity-15 pointer-events-none">
         <img src="images/Hero/bg.png" alt="" />
       
       </div>

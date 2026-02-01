@@ -115,14 +115,47 @@ export default function Home() {
 
   // Define the content for the "Next Section" that will parallax up
   const NextSectionContent = (
-    <div className="absolute inset-0 opacity-100 pointer-events-none">
-        <img src="images/Hero/bg.png" alt="" />
-      
-      <div className="text-center text-white">
-        <p className="text-[#C09B6F] font-serif italic text-xl mb-4">The Journey Continues</p>
-        <h2 className="text-4xl md:text-6xl font-serif">The Results</h2>
-      </div>
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#8B6C50]">
+  {/* Background dengan Overlay agar teks lebih terbaca */}
+  <div className="absolute inset-0 opacity-40">
+    <img src="images/Hero/bg.png" alt="Background" className="w-full h-full object-cover" />
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#8B6C50]"></div>
+  </div>
+
+  {/* Konten Utama */}
+  <div className="relative z-10 text-center px-4">
+    {/* Badge/Konteks Atas */}
+    <div className="mb-6 animate-fade-in-down">
+      <p className="text-[#FEDB73] font-serif italic text-xl tracking-widest uppercase mb-2">
+        The Journey Continues
+      </p>
+      <div className="h-[1px] w-24 bg-[#C09B6F] mx-auto"></div>
     </div>
+
+    {/* Judul Utama dengan Efek Gradient Emas */}
+    <h2 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-tight">
+      You Our Next<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C09B6F] via-[#FEDB73] to-[#FEDB73]"> Winner</span>
+    </h2>
+
+    {/* CTA: Statement "The Next Winner" */}
+    <div className="max-w-2xl mx-auto">
+      <p className="text-gray-300 text-lg md:text-2xl font-light tracking-wide mb-10 leading-relaxed">
+        Destiny is calling. Prepare yourself, for the stage is set and 
+        <span className="text-white font-semibold italic"> you should be the next winner.</span>
+      </p>
+
+      {/* Button Action */}
+      <button className="px-8 py-4 bg-black text-white rounded-xl font-bold uppercase tracking-tighter hover:bg-[#d4b589] transition-all transform hover:scale-105 duration-300 shadow-[0_0_20px_rgba(192,155,111,0.4)]">
+        Claim Your Throne
+      </button>
+    </div>
+  </div>
+
+  {/* Dekorasi Ornamen (Opsional) */}
+  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+    <div className="w-[1px] h-12 bg-gradient-to-b from-[#C09B6F] to-transparent"></div>
+  </div>
+</div>
   );
 
   return (

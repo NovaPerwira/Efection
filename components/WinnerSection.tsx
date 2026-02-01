@@ -15,7 +15,7 @@ export default function WinnerSection() {
       {/* === BACKGROUND LAYERS === */}
       
       {/* 1. Base Pattern (Floral/Damask) */}
-      <div className="absolute inset-0 z-0 opacity-15">
+      <div className="absolute w-full h-full inset-0 z-0 opacity-15">
         <Image
           // Ganti dengan pattern batik/floral yang sesuai jika ada
           src="/images/Hero/bg.png" 
