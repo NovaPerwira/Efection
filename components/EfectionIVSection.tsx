@@ -49,7 +49,7 @@ export default function EfectionIVSection({
         <div className="flex flex-col items-center justify-center leading-tight">
           <motion.h1
             className="
-              text-3xl sm:text-4xl md:text-5xl
+              text-4xl md:text-7xl
               font-serif
               tracking-[0.12em]
               font-bold
