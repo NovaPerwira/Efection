@@ -151,10 +151,6 @@ export default function EfectionIVSection({
 
 
       {/* --- Side Floating Images --- */}
-      {/* UPDATED POSITIONING: 
-          Uses responsive sizing (w-24 -> w-48) 
-          and responsive positioning to prevent overlap on small screens.
-      */}
       
       {/* Left Column */}
       <SideImage 
