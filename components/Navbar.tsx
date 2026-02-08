@@ -159,8 +159,17 @@ export default function Navbar() {
           <div className="hidden md:flex items-center flex-1 justify-center px-8">
              {/* Left Links */}
              <div className="flex items-center space-x-1 mr-4">
-                {['Hero', 'About'].map((item) => (
+                {['Hero',].map((item) => (
                     <a key={item} href="#" 
+                       className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
+                       onMouseEnter={() => setIsHovering(true)}
+                       onMouseLeave={() => setIsHovering(false)}
+                    >
+                        {item}
+                    </a>
+                ))}
+                {['About'].map((item) => (
+                    <a key={item} href="/#aboutus" 
                        className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
                        onMouseEnter={() => setIsHovering(true)}
                        onMouseLeave={() => setIsHovering(false)}
@@ -178,7 +187,7 @@ export default function Navbar() {
              {/* Right Links */}
              <div className="flex items-center space-x-1 ml-4">
                 {['Competition'].map((item) => (
-                    <a key={item} href="#" 
+                    <a key={item} href="/#competition" 
                        className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
                        onMouseEnter={() => setIsHovering(true)}
                        onMouseLeave={() => setIsHovering(false)}
@@ -250,7 +259,7 @@ export default function Navbar() {
                         {['Hero', 'About', 'Competition', 'Join Us'].map((item, idx) => (
                              <motion.a 
                                 key={item} 
-                                href="#" 
+                                href="/#competition" 
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.1 + (idx * 0.05) }}
