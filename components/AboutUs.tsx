@@ -15,7 +15,7 @@ const fadeRight = {
 
 export default function AboutSection() {
   return (
-    <section id="aboutus"
+    <section
       className="
         relative
         min-h-screen
