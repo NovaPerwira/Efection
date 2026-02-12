@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import CompetitionCard from "@/components/CompetitionCard";
-
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -11,7 +9,7 @@ const fadeUp = {
 
 export default function Competition() {
   return (
-    <section id="competition" className="bg-[#C09B6F] relative min-h-screen overflow-hidden">
+    <section className="bg-[#C09B6F] relative min-h-screen overflow-hidden">
 
       {/* TILED BACKGROUND */}
       <div
@@ -22,6 +20,7 @@ export default function Competition() {
         }}
       />
       <div className="absolute inset-0 bg-[#C09B6F]/30" />
+
       {/* CONTENT */}
       <motion.div
         className="relative z-10 max-w-7xl mx-auto px-6 py-24"
@@ -53,10 +52,10 @@ export default function Competition() {
             <h4 className="h4 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]">Middle School</h4>
 
             {/* 3️⃣ Storytelling */}
-            <CompetitionCard title="Story telling" w={310} h={286} slug="middle-storytelling" icon="/images/competitions/STORYTELLING_SMP.png" iconSize={150}/>
+            <CompetitionCard title="Story telling" w={310} h={286} />
 
             {/* 4️⃣ Speech */}
-            <CompetitionCard title="Speech" w={310} h={425} slug="middle-speech" icon="/images/competitions/SPEECH_SMP.png" iconSize={190}/>
+            <CompetitionCard title="Speech" w={310} h={425} />
           </motion.div>
 
           {/* ================= HIGH SCHOOL ================= */}
@@ -64,10 +63,10 @@ export default function Competition() {
             <h4 className="h4 text-[#F4D35E] drop-shadow-[0_5px_1px_rgba(0,0,0,0.5)]">High School</h4>
 
             {/* 5️⃣ Storytelling */}
-            <CompetitionCard title="Story telling" w={310} h={427} slug="high-storytelling" icon="/images/competitions/STORYTELLING_SMA.png" iconSize={200}/>
+            <CompetitionCard title="Story telling" w={310} h={427} />
 
             {/* 6️⃣ Speech */}
-            <CompetitionCard title="Speech" w={310} h={286} slug="high-speech" icon="/images/competitions/SPEECH_SMA.png" iconSize={150}/>
+            <CompetitionCard title="Speech" w={310} h={286} />
           </motion.div>
 
           {/* ================= OPEN / UNIVERSITY ================= */}
@@ -76,12 +75,12 @@ export default function Competition() {
             <h4 className="h4 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]">Varsity</h4>
 
             {/* Debate */}
-            <CompetitionCard title="Debate" w={310} h={304} slug="university-debate" icon="/images/competitions/DEBATE.png" iconSize={150}/>
+            <CompetitionCard title="Debate" w={310} h={304} />
 
             {/* 8️⃣ Open Category moved DOWN */}
             <h4 className="h4 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]">Open Category</h4>
 
-            <CompetitionCard title="Story Writing" w={310} h={342}  slug="open-story-writing" icon="/images/competitions/STORYWRITING.png" iconSize={190}/>
+            <CompetitionCard title="Story Writing" w={310} h={342} />
           </motion.div>
         </div>
       </motion.div>
@@ -89,4 +88,42 @@ export default function Competition() {
   );
 }
 
+/* ================= CARD COMPONENT ================= */
 
+function CompetitionCard({
+  title,
+  w,
+  h,
+}: {
+  title: string;
+  w: number;
+  h: number;
+}) {
+  return (
+    <div
+      className="bg-[#F4D35E] rounded-xl
+                 shadow-[0_12px_0_rgba(0,0,0,0.25)]
+                 px-6 pt-6"
+      style={{
+        width: `${w}px`,
+        height: `${h}px`,
+        backgroundImage:
+          'linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.05))',
+      }}
+    >
+      {/* TOP-MIDDLE TEXT */}
+      <div className="flex justify-center">
+        <span
+          style={{
+            fontFamily: 'Grenze, serif',
+            fontSize: '50px',
+            color: '#fff',
+            textShadow: '0 3px 6px rgba(0,0,0,0.4)',
+          }}
+        >
+          {title}
+        </span>
+      </div>
+    </div>
+  );
+}
