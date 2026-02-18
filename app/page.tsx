@@ -116,25 +116,39 @@ export default function Home() {
   };
 
   // Define the content for the "Next Section" that will parallax up
+  
+
+
   const NextSectionContent = (
-    <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#8B6C50]">
-      {/* Background dengan Overlay agar teks lebih terbaca */}
-      <div className="absolute inset-0 opacity-40">
-        <img src="images/Hero/bg.png" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#8B6C50]"></div>
-      </div>
+  <div className="relative h-[120vh] w-full flex items-center justify-center overflow-hidden bg-[#2a241e]">
+    {/* Background dengan Overlay Transisi */}
+    <div className="absolute inset-0 z-0">
+      <img 
+        src="images/Hero/bg.png" 
+        alt="Background" 
+        className="absolute inset-0 w-full h-[120%] object-cover opacity-30" 
+      />
+      
+      <div className="absolute inset-0 bg-gradient-to-b from-[#C09B6F]/50 via-[#C09B6F]/50 to-[#1a1614]"></div>
+    </div>
 
-      {/* Konten Utama */}
-      <div className="relative z-10 text-center px-4">
-        {/* Badge/Konteks Atas */}
-        <div className="mb-6 animate-fade-in-down">
-          <p className="text-[#FEDB73] font-serif italic text-xl tracking-widest uppercase mb-2">
-            The Journey Continues
-          </p>
-          <div className="h-[1px] w-24 bg-[#C09B6F] mx-auto"></div>
-        </div>
+    {/* Konten Utama */}
+    <div className="relative z-10 text-center px-4 max-w-5xl">
+      {/* Badge/Konteks Atas */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="mb-8"
+      >
+        <p className="text-[#F4E04D] font-serif italic text-lg md:text-xl tracking-[0.3em] uppercase mb-4">
+          The Journey Continues
+        </p>
+        <div className="h-[2px] w-16 bg-gradient-to-r from-transparent via-[#F4E04D] to-transparent mx-auto"></div>
+      </motion.div>
 
-        {/* Judul Utama dengan Efek Gradient Emas */}
+      {/* Judul Utama */}
+      {/* Judul Utama dengan Efek Gradient Emas */}
         <h2 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-tight">
           You Our Next<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C09B6F] via-[#FEDB73] to-[#FEDB73]">Winner</span>
         </h2>
@@ -151,14 +165,13 @@ export default function Home() {
             Claim Your Throne
           </button>
         </div>
-      </div>
-
-      {/* Dekorasi Ornamen (Opsional) */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-[1px] h-12 bg-gradient-to-b from-[#C09B6F] to-transparent"></div>
-      </div>
     </div>
-  );
+
+    {/* Dekorasi Ornamen Bawah (Vignette Effect) */}
+    <div className="absolute bottom-0 left-0 w-full h-42 bg-gradient-to-t from-[#1a1614] to-transparent opacity-80"></div>
+    
+  </div>
+);
 
   return (
     <>
@@ -179,9 +192,9 @@ export default function Home() {
           {/* These render naturally AFTER the sticky section is done */}
           <div className="relative z-10 bg-black">
             {/* Ensure Timeline background blends seamlessly */}
-            <div className="relative pt-20">
+            
               <Timeline />
-            </div>
+            
             <Competition />
             <FAQ />
             <AboutSection />

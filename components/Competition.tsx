@@ -13,6 +13,7 @@ export default function Competition() {
   return (
     <section id="competition" className="bg-[#C09B6F] relative min-h-screen overflow-hidden">
 
+      
       {/* TILED BACKGROUND */}
       <div
         className="absolute inset-0 bg-repeat"

@@ -1,176 +1,178 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
-interface TimelineEvent {
-  id: number;
-  title: string;
-  description: string;
-  position: 'top' | 'bottom';
-  isSpecial?: boolean;
-}
-
-const events: TimelineEvent[] = [
+const timelineEvents = [
   {
     id: 1,
-    title: "Early Bird",
-    description: "Lorem ipsum dolor sit amet, consectetur",
-    position: 'top',
+    date: "23 February",
+    title: "Open OR",
+    description: "The journey begins. Recruitment opens for all aspiring candidates.",
+    align: "top"
   },
   {
     id: 2,
-    title: "Normal Wave",
-    description: "Lorem ipsum dolor sit amet, consectetur",
-    position: 'bottom',
+    date: "25 April",
+    title: "Preliminary Announcement",
+    description: "The first wave of selections. Who will proceed to the next stage?",
+    align: "bottom"
   },
   {
     id: 3,
-    title: "Late Bird",
-    description: "Lorem ipsum dolor sit amet, consectetur",
-    position: 'top',
+    date: "2 May",
+    title: "Close OR / Debate & SW",
+    description: "Recruitment closes. The intellectual battleground commences.",
+    align: "top"
   },
   {
     id: 4,
-    title: "Adjudication",
-    description: "Lorem ipsum dolor sit amet, consectetur",
-    position: 'bottom',
-  },
-  {
-    id: 5,
+    date: "17 & 25 May",
     title: "D-Day",
-    description: "Lorem ipsum dolor sit amet, consectetur",
-    position: 'top',
-    isSpecial: true,
+    description: "The final culmination. The new era is established.",
+    align: "bottom"
   },
 ];
 
-export default function Timeline() {
+export default function CulturalTimeline() {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"] // Memastikan tracking dari awal sampai akhir section
+  });
+
+  // Membuat gerakan scroll terasa lebih halus (smooth)
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "-70%"]);
+  const bgPos = useTransform(smoothProgress, [0, 1], ["0% 0%", "100% 0%"]);
+
   return (
-    <section className="bg-[#C09B6F] relative min-h-screen overflow-hidden">
-
-      {/* TILED BACKGROUND */}
-      <div
-        className="absolute inset-0 bg-repeat"
-        style={{
-          backgroundImage: "url('/images/timeline/bg_overlay.png')",
-          backgroundSize: '280px 280px',
-        }}
-      />
-      <div className="absolute inset-0 bg-[#C09B6F]/20" />
-
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 flex flex-col items-center">
-
-        {/* TITLE */}
-        <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-md mb-20">
-          Our Timeline
-        </h1>
-
-        {/* TIMELINE WRAPPER */}
-        <div className="relative w-full max-w-6xl flex-1 flex items-center justify-center">
-
-          {/* SVG WAVE */}
-        <svg
-          className="absolute inset-x-0 top-1/2 -translate-y-1/2
-                    w-full h-[420px]
-                    pointer-events-none drop-shadow-xl"
-          viewBox="0 0 1000 400"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <path
-            d="
-              M -10,150
-              C 150,150 150,300 250,300
-              S 350,150 500,150
-              S 650,300 750,300
-              S 850,150 1010,150
-            "
-            fill="none"
-            stroke="#3a2c1f"
-            strokeWidth="120"
-            strokeLinecap="round"
-          />
-        </svg>
+    <section ref={targetRef} className="relative py-10 h-[400vh] bg-[#1a1614]">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
-          {/* NODES */}
-          <div className="absolute inset-0 w-full h-full">
-            {events.map((event, index) => {
-              const leftPos = `${(index + 1) * (100 / (events.length + 1))}%`;
-              const topPos = event.position === 'top' ? '30%' : '65%';
+        {/* Background Texture */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/stardust.png")` }} 
+        />
+        <motion.div 
+          style={{ backgroundPosition: bgPos }}
+          className="absolute inset-0 z-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-900/40 via-[#1a1614] to-[#1a1614]"
+        />
 
-              return (
-                <div
-                  key={event.id}
-                  className="group absolute flex flex-col items-center
-                             transform -translate-x-1/2 -translate-y-1/2"
-                  style={{ left: leftPos, top: topPos }}
-                >
+        <motion.div style={{ x }} className="relative flex gap-20 px-[15vw] items-center z-10">
+          
+          {/* PROGRESS PATH LAYER */}
+          <div className="absolute top-1/2 left-0 w-[4000px] h-40 -translate-y-1/2 pointer-events-none">
+             <svg width="100%" height="100%" viewBox="0 0 4000 200" preserveAspectRatio="none">
+               <defs>
+                 <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                   <feGaussianBlur stdDeviation="5" result="blur" />
+                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                 </filter>
+               </defs>
+               
+               {/* Jalur Abu-abu (Background Path) */}
+               <path
+                 d="M 0,100 C 500,100 700,180 1200,100 S 1700,20 2200,100 S 2700,180 3200,100 S 3700,20 4000,100"
+                 fill="none"
+                 stroke="#F4E04D"
+                 strokeWidth="2"
+                 className="opacity-10" // Jalur tipis transparan sebagai panduan
+               />
 
-                  {/* TOP DESCRIPTION */}
-                  {event.position === 'top' && (
-                    <div
-                      className="
-                        mb-4 text-center w-48
-                        opacity-100 md:opacity-0
-                        md:group-hover:opacity-100
-                        scale-100 md:scale-95
-                        md:group-hover:scale-100
-                        transition-all duration-300
-                      "
-                    >
-                      <p className="text-sm text-gray-800 italic mb-1">
-                        "{event.description}"
-                      </p>
-                      <div className="h-8 w-0.5 bg-yellow-200 mx-auto" />
-                    </div>
-                  )}
-
-                  {/* NODE */}
-                  <div
-                    className={`
-                      flex items-center justify-center rounded-full shadow-lg
-                      border-4 border-opacity-50 transition-transform duration-300
-                      group-hover:scale-110
-                      ${
-                        event.isSpecial
-                          ? 'w-32 h-32 bg-[#ff9f75] border-[#ffccbc]'
-                          : 'w-28 h-28 bg-[#fdd870] border-[#feeeb3]'
-                      }
-                    `}
-                  >
-                    <span
-                      className={`text-center font-bold leading-tight ${
-                        event.isSpecial ? 'text-2xl font-black' : 'text-lg'
-                      }`}
-                    >
-                      {event.title}
-                    </span>
-                  </div>
-
-                  {/* BOTTOM DESCRIPTION */}
-                  {event.position === 'bottom' && (
-                    <div
-                      className="
-                        mt-4 text-center w-48
-                        opacity-100 md:opacity-0
-                        md:group-hover:opacity-100
-                        scale-100 md:scale-95
-                        md:group-hover:scale-100
-                        transition-all duration-300
-                      "
-                    >
-                      <div className="h-8 w-0.5 bg-yellow-200 mx-auto mb-1" />
-                      <p className="text-sm text-gray-800 italic">
-                        "{event.description}"
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+               {/* Jalur Progress (Active Path) */}
+               <motion.path
+                 d="M 0,100 C 500,100 700,180 1200,100 S 1700,20 2200,100 S 2700,180 3200,100 S 3700,20 4000,100"
+                 fill="none"
+                 stroke="#F4E04D"
+                 strokeWidth="6"
+                 strokeLinecap="round"
+                 style={{ pathLength: smoothProgress }} // Ini yang membuatnya menjadi progress bar
+                 filter="url(#glow)"
+               />
+             </svg>
           </div>
-        </div>
+
+          {/* TITLE CARD */}
+          <div className="flex-shrink-0 w-[30vw] mr-20">
+            <h2 className="text-7xl md:text-9xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F4E04D] to-[#bf9b30]">
+              Our<br/>Journey
+            </h2>
+          </div>
+
+          {/* EVENTS */}
+          {timelineEvents.map((event) => (
+            <TimelineNode key={event.id} event={event} progress={smoothProgress} />
+          ))}
+
+          {/* END CARD */}
+          <div className="flex-shrink-0 w-[40vw] flex items-center justify-center">
+             <motion.div 
+               style={{ opacity: useTransform(smoothProgress, [0.9, 1], [0, 1]) }}
+               className="text-5xl font-serif text-[#F4E04D] border-l-8 border-[#F4E04D] pl-8"
+             >
+               The New Era<br/>Has Arrived
+             </motion.div>
+          </div>
+
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function TimelineNode({ event, progress }: { event: any, progress: any }) {
+  const isTop = event.align === 'top';
+  
+  // Titik menyala hanya jika progress scroll sudah melewati titik tersebut
+  // (Angka di bawah perlu disesuaikan dengan posisi visual node Anda)
+  const dotGlow = useTransform(progress, [0, 1], [0, 1]);
+
+  return (
+    <div className="relative flex-shrink-0 w-[400px] h-[500px] flex flex-col justify-center items-center">
+      
+      {/* Connector Line */}
+      <motion.div 
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        className={`absolute left-1/2 w-0.5 bg-[#F4E04D]/30 origin-${isTop ? 'bottom' : 'top'} ${isTop ? 'bottom-1/2 h-32' : 'top-1/2 h-32'}`} 
+      />
+
+      {/* The Dot on the Path */}
+      <motion.div 
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#1a1614] border-4 border-[#F4E04D] rounded-full z-20"
+        style={{ 
+          boxShadow: "0 0 20px rgba(244, 224, 77, 0.5)",
+          scale: useTransform(progress, [0, 1], [0.8, 1.2]) 
+        }}
+      />
+
+      {/* Content Card */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ margin: "-100px" }}
+        className={`
+          absolute left-0 right-0 p-8
+          border border-[#F4E04D]/20 bg-[#1a1614]/90 backdrop-blur-md
+          rounded-2xl shadow-2xl
+          ${isTop ? 'bottom-[65%]' : 'top-[65%]'}
+        `}
+      >
+        <span className="inline-block px-4 py-1 mb-4 text-xs font-black tracking-[0.2em] text-[#1a1614] bg-[#F4E04D] rounded-full uppercase">
+          {event.date}
+        </span>
+        <h3 className="text-3xl font-serif text-white mb-3">{event.title}</h3>
+        <p className="text-gray-400 text-base font-light leading-relaxed">{event.description}</p>
+      </motion.div>
+      
+    </div>
+      
   );
 }
