@@ -29,14 +29,14 @@ export default function StickyZoomSection({ children, onZoomComplete, nextSectio
   const nextSectionOpacity = useTransform(scrollYProgress, [0.3, 0.6], [0, 1])
 
   return (
-    <section ref={containerRef} className="relative h-[250vh] bg-black">
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section ref={containerRef} className="relative h-[250vh] bg-[#3b352d]">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden">
 
         {/* Next Section (Background Layer) */}
         {/* It sits absolutely behind the winner section */}
         <motion.div
           style={{ y: nextSectionY, scale: nextSectionScale, opacity: nextSectionOpacity }}
-          className="absolute inset-0 z-0 flex items-center justify-center will-change-transform"
+          className="absolute inset-0 z-0 w-full h-full flex items-center justify-center will-change-transform"
         >
           {nextSection}
         </motion.div>

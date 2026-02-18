@@ -16,29 +16,29 @@ export default function EfectionIVSection({
   animate = true,
 }: EfectionIVSectionProps) {
   return (
-    <section className="relative w-full py-16 md:py-24 min-h-screen overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
+    <section className="relative w-full py-16 md:py-24 min-h-[100dvh] overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
       {/* --- Background Elements --- */}
-      
+
       {/* Vertical Stripes Pattern */}
-      <div className="absolute w-full h-full inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/bg.png" alt="" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <img src="images/Hero/bg.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
 
       {/* Central Emblem Silhouette (Decorative Background) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] pointer-events-none z-0">
-         <img src="images/Hero/logo.webp" alt="" className="w-full h-full object-contain opacity-50" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] xl:w-[700px] xl:h-[700px] 2xl:w-[800px] 2xl:h-[800px] pointer-events-none z-0">
+        <img src="images/Hero/logo.webp" alt="" className="w-full h-full object-contain" />
       </div>
 
       {/* --- Main Content --- */}
       <motion.div
         className="
           relative z-20 
-          w-full max-w-[860px]
-          px-4 md:px-8 py-10 md:py-16
+          w-full max-w-[860px] xl:max-w-[1060px] 2xl:max-w-[1200px]
+          px-4 md:px-8 xl:px-12 py-10 md:py-16 xl:py-20
           mt-4 md:mt-10
           text-center
           text-[#f5f1ea]
-          backdrop-blur-[2px]
+          
         "
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export default function EfectionIVSection({
         <div className="flex flex-col items-center justify-center leading-tight">
           <motion.h1
             className="
-              text-4xl md:text-7xl
+              text-4xl md:text-7xl xl:text-8xl 2xl:text-9xl
               font-serif
               tracking-[0.12em]
               font-bold
@@ -67,7 +67,7 @@ export default function EfectionIVSection({
           {/* Subtitle */}
           <motion.h2
             className="
-              text-xl md:text-2xl
+              text-xl md:text-2xl xl:text-3xl 2xl:text-4xl
               font-serif
               text-[#e2ddd4]
               tracking-wide
@@ -155,32 +155,32 @@ export default function EfectionIVSection({
           Uses responsive sizing (w-24 -> w-48) 
           and responsive positioning to prevent overlap on small screens.
       */}
-      
+
       {/* Left Column */}
-      <SideImage 
-        src="/images/Hero/psrt 1.webp" 
-        className="top-4 -left-4 md:top-0 md:left-0" 
-        delay={0.2} 
+      <SideImage
+        src="/images/Hero/psrt 1.webp"
+        className="top-4 -left-4 md:top-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
+        delay={0.2}
         rotation={-5}
       />
-      <SideImage 
-        src="/images/Hero/psrt 3.webp" 
-        className="bottom-4 -left-4 md:bottom-0 md:left-0" 
-        delay={0.4} 
+      <SideImage
+        src="/images/Hero/psrt 3.webp"
+        className="bottom-4 -left-4 md:bottom-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
+        delay={0.4}
         rotation={5}
       />
 
       {/* Right Column */}
-      <SideImage 
-        src="/images/Hero/psrt 2.webp" 
-        className="top-4 -right-4 md:top-0 md:-right-4" 
-        delay={0.3} 
+      <SideImage
+        src="/images/Hero/psrt 2.webp"
+        className="top-4 -right-4 md:top-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
+        delay={0.3}
         rotation={5}
       />
-      <SideImage 
-        src="/images/Hero/psrt 4.webp" 
-        className="bottom-4 -right-4 md:bottom-0 md:-right-6" 
-        delay={0.5} 
+      <SideImage
+        src="/images/Hero/psrt 4.webp"
+        className="bottom-4 -right-4 md:bottom-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
+        delay={0.5}
         rotation={-5}
       />
     </section>
@@ -192,7 +192,7 @@ function SideImage({ src, className, delay, rotation = 0 }: SideImageProps) {
     <motion.div
       // REMOVED "hidden lg:block"
       // Added responsive width/height: w-24 h-32 on mobile -> w-48 h-64 on desktop
-      className={`absolute z-10 w-24 h-32 sm:w-32 sm:h-44 md:w-40 md:h-52 lg:w-48 lg:h-64 ${className}`}
+      className={`absolute z-10 w-24 h-32 sm:w-32 sm:h-44 md:w-40 md:h-52 lg:w-48 lg:h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 ${className}`}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
