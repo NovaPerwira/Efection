@@ -102,37 +102,65 @@ export default function EfectionIVSection({
 
         {/* Prize Pool */}
         <motion.div
-          className="
-            relative inline-flex flex-col items-center
-            px-10 py-8 mt-4
-            bg-black/40 backdrop-blur-md 
-            border border-[#FEDB73]/20 rounded-2xl
-            shadow-[0_20px_50px_rgba(0,0,0,0.5)]
-          "
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-        >
-          {/* Decorative Line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#FEDB73] to-transparent" />
+  className="
+    relative inline-flex flex-col items-center
+    px-10 py-8 mt-4
+    bg-black/40 backdrop-blur-md 
+    border border-[#FEDB73]/20 rounded-2xl
+    shadow-[0_20px_50px_rgba(0,0,0,0.5)]
+    cursor-pointer
+    overflow-hidden
+    group
+  "
+  // 1. Animasi Gorden Tertutup (Awal)
+  initial={{ 
+    opacity: 0, 
+    y: 30,
+    clipPath: "inset(0 50% 0 50%)" // Memotong elemen menyisakan titik tengah saja
+  }}
+  // 2. Animasi Gorden Terbuka (Saat Muncul)
+  whileInView={{ 
+    opacity: 1, 
+    y: 0,
+    clipPath: "inset(0 0% 0 0%)" // Membuka potongan sepenuhnya ke sisi kiri & kanan
+  }}
+  viewport={{ once: true, margin: "-50px" }}
+  transition={{ 
+    delay: 0.3, 
+    duration: 1, 
+    ease: [0.16, 1, 0.3, 1] // Custom ease (cubic-bezier) untuk efek dramatis yang mulus
+  }}
+  // 3. Efek Interaktif (Hover & Tap)
+  whileHover={{ 
+    scale: 1.05,
+    borderColor: "rgba(254, 219, 115, 0.6)", // Border lebih menyala
+    boxShadow: "0 25px 60px rgba(254, 219, 115, 0.15)", // Glow emas di belakang
+    transition: { duration: 0.3 }
+  }}
+  whileTap={{ scale: 0.97 }}
+>
+  {/* Efek Cahaya Lewat (Shine/Glare) saat di-hover */}
+  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#FEDB73]/10 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
 
-          <p className="text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-[#FEDB73] mb-2 font-bold">
-            Total Prize Pool
-          </p>
+  {/* Decorative Line */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#FEDB73] to-transparent" />
 
-          <h3 className="text-3xl md:text-5xl xl:text-6xl font-serif font-black text-white tracking-tight drop-shadow-md">
-            <span className="text-lg md:text-2xl align-top mr-1 font-light opacity-80">Rp.</span>
-            13,500,000
-          </h3>
+  <p className="text-[10px] md:text-[12px] uppercase tracking-[0.4em] text-[#FEDB73] mb-2 font-bold transition-colors group-hover:text-white">
+    Total Prize Pool
+  </p>
 
-          {/* Decorative Bottom */}
-          <div className="flex items-center gap-3 mt-4 w-full opacity-60">
-            <div className="h-[1px] flex-1 bg-gradient-to-l from-[#C09B6F] to-transparent"></div>
-            <div className="w-2 h-2 rotate-45 border border-[#FEDB73]"></div>
-            <div className="h-[1px] flex-1 bg-gradient-to-r from-[#C09B6F] to-transparent"></div>
-          </div>
-        </motion.div>
+  <h3 className="text-3xl md:text-5xl xl:text-6xl font-serif font-black text-white tracking-tight drop-shadow-md">
+    <span className="text-lg md:text-2xl align-top mr-1 font-light opacity-80 group-hover:opacity-100 transition-opacity">Rp.</span>
+    13,500,000
+  </h3>
+
+  {/* Decorative Bottom */}
+  <div className="flex items-center gap-3 mt-4 w-full opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="h-[1px] flex-1 bg-gradient-to-l from-[#C09B6F] to-transparent"></div>
+    <div className="w-2 h-2 rotate-45 border border-[#FEDB73] group-hover:bg-[#FEDB73] transition-colors"></div>
+    <div className="h-[1px] flex-1 bg-gradient-to-r from-[#C09B6F] to-transparent"></div>
+  </div>
+</motion.div>
       </motion.div>
 
 
