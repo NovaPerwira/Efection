@@ -109,7 +109,7 @@ export default function EfectionIVSection({
         <motion.div
   className="
     relative inline-flex flex-col items-center
-    px-4 py-6 md:px-10 md:py-8 mt-4
+    px-10 py-8 mt-4
     bg-black/40 backdrop-blur-md 
     border border-[#FEDB73]/20 rounded-2xl
     shadow-[0_20px_50px_rgba(0,0,0,0.5)]
@@ -118,17 +118,17 @@ export default function EfectionIVSection({
     group
   "
   // 1. Animasi Gorden Tertutup (Awal)
-  initial={{
-    opacity: 0,
+  initial={{ 
+    opacity: 0, 
     y: 30,
-    scaleX: 0
+    clipPath: "inset(0 50% 0 50%)" // Memotong elemen menyisakan titik tengah saja
   }}
-  whileInView={{
-    opacity: 1,
+  // 2. Animasi Gorden Terbuka (Saat Muncul)
+  whileInView={{ 
+    opacity: 1, 
     y: 0,
-    scaleX: 1
+    clipPath: "inset(0 0% 0 0%)" // Membuka potongan sepenuhnya ke sisi kiri & kanan
   }}
-  style={{ transformOrigin: "center" }}
   viewport={{ once: true, margin: "-50px" }}
   transition={{ 
     delay: 0.3, 
@@ -154,10 +154,10 @@ export default function EfectionIVSection({
     Total Prize Pool
   </p>
 
-  <motion.h3 className="text-3xl md:text-5xl xl:text-6xl font-serif font-black text-white tracking-tight drop-shadow-md">
+  <h3 className="text-3xl md:text-5xl xl:text-6xl font-serif font-black text-white tracking-tight drop-shadow-md">
     <span className="text-lg md:text-2xl align-top mr-1 font-light opacity-80 group-hover:opacity-100 transition-opacity">Rp.</span>
     13,500,000
-  </motion.h3>
+  </h3>
 
   {/* Decorative Bottom */}
   <div className="flex items-center gap-3 mt-4 w-full opacity-60 group-hover:opacity-100 transition-opacity duration-300">
