@@ -162,47 +162,47 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Menu Container */}
           <div className="hidden md:flex items-center flex-1 justify-center px-8">
+            
             {/* Left Links */}
-            <div className="flex items-center space-x-1 mr-4">
-              {['Hero',].map((item) => (
-                <a key={item} href="#"
-                  className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
+            <div className="flex items-center space-x-3 mr-4">
+              {['Hero', 'About'].map((item) => (
+                <motion.a 
+                  key={item} 
+                  href={item === 'Hero' ? '/' : `/#${item.toLowerCase()}`}
+                  className="relative px-5 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/10 backdrop-blur-md border border-white/20 shadow-sm hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] hover:shadow-[0_0_15px_rgba(254,219,115,0.3)] transition-all duration-300"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
                   {item}
-                </a>
-              ))}
-              {['About'].map((item) => (
-                <a key={item} href="/#aboutus"
-                  className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  {item}
-                </a>
+                </motion.a>
               ))}
             </div>
 
             {/* Center Logo Icon */}
-            <div className="flex-shrink-0 mx-2 transform hover:scale-105 transition-transform duration-300">
-              <img src="/images/Hero/nav-logo.png" alt="Logo" className="h-8 w-auto object-contain drop-shadow-sm" />
+            <div className="flex-shrink-0 mx-2 transform hover:scale-110 transition-transform duration-300 cursor-pointer">
+              <img src="/images/Hero/nav-logo.png" alt="Logo" className="h-9 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
             </div>
 
             {/* Right Links */}
-            <div className="flex items-center space-x-1 ml-4">
+            <div className="flex items-center space-x-3 ml-4">
               {['Competition'].map((item) => (
-                <a key={item} href="/#competition"
-                  className="text-black hover:bg-black/5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
+                <motion.a 
+                  key={item} 
+                  href="/#competition"
+                  className="relative px-5 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/20 backdrop-blur-md border border-white/20 shadow-sm hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] hover:shadow-[0_0_15px_rgba(254,219,115,0.3)] transition-all duration-300"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
                   {item}
-                </a>
+                </motion.a>
               ))}
             </div>
+            
           </div>
 
           {/* Desktop CTA */}
@@ -231,60 +231,63 @@ export default function Navbar() {
       {/* --- Mobile Menu Overlay --- */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#3b352d]/85 shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
-            >
-              <div className="flex justify-between items-center mb-10">
-                <h2 className="text-2xl font-bold text-white tracking-tight">Efection</h2>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 -mr-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
-                >
-                  <CloseIcon />
-                </button>
-              </div>
-
-              <div className="space-y-2">
-                {['Hero', 'About', 'Competition', 'Join Us'].map((item, idx) => (
-                  <motion.a
-                    key={item}
-                    href="/#competition"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (idx * 0.05) }}
-                    className="block px-4 py-3 rounded-xl text-lg font-medium text-gray-300 hover:text-black hover:bg-white transition-all duration-200"
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-10"
+          <motion.div
+            key="mobile-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+          />
+        )}
+        {isMobileMenuOpen && (
+          <motion.div
+            key="mobile-sidebar"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#3b352d]/85 shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
+          >
+            <div className="flex justify-between items-center mb-10">
+              <h2 className="text-2xl font-bold text-white tracking-tight">Efection</h2>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 -mr-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
               >
-                <button className="w-full bg-white text-black px-4 py-3.5 rounded-xl text-base font-bold hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] transition-all">
-                  Join Us Now
-                </button>
-              </motion.div>
+                <CloseIcon />
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {['Hero', 'About', 'Competition', 'Join Us'].map((item, idx) => (
+                <motion.a
+                  key={item}
+                  href="/#competition"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + (idx * 0.05) }}
+                  className="block px-4 py-3 rounded-xl text-lg font-medium text-gray-300 hover:text-black hover:bg-white transition-all duration-200"
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-10"
+            >
+              <button className="w-full bg-white text-black px-4 py-3.5 rounded-xl text-base font-bold hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                Join Us Now
+              </button>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 }
+

@@ -7,9 +7,12 @@ import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/StickyZoom";
 import AboutSection from "@/components/AboutUs";
 import FAQ from "@/components/FAQ";
-import Competition from "@/components/Competition";
+// import Competition from "@/components/Competition";
 import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
+import Competition from "@/components/Competition-revisi";
+import WhyChooseUsSection from "@/components/whychooseus";
+import CompetitionSection from "@/components/Competition-revisi";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -195,8 +198,10 @@ export default function Home() {
             
               <Timeline />
             
-            <Competition />
-            <FAQ />
+            {/* <Competition /> */}
+             <CompetitionSection />
+            {/* <FAQ /> */}
+           
             <AboutSection />
             <Footer />
           </div>

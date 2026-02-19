@@ -204,8 +204,6 @@ export default function EfectionIVSection({
 function SideImage({ src, className, delay, rotation = 0 }: SideImageProps) {
   return (
     <motion.div
-      // REMOVED "hidden lg:block"
-      // Added responsive width/height: w-24 h-32 on mobile -> w-48 h-64 on desktop
       className={`absolute z-10 w-24 h-32 sm:w-32 sm:h-44 md:w-40 md:h-52 lg:w-48 lg:h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 ${className}`}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
