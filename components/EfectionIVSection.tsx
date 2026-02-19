@@ -16,7 +16,7 @@ export default function EfectionIVSection({
   animate = true,
 }: EfectionIVSectionProps) {
   return (
-    <section className="relative w-full py-16 md:py-24 min-h-[100dvh] overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
+    <section className="relative w-full py-16 md:py-24 min-h-screen overflow-hidden bg-[#3b352d] flex flex-col items-center justify-center">
       {/* --- Background Elements --- */}
 
       {/* Vertical Stripes Pattern */}
