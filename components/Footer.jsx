@@ -8,14 +8,11 @@ export default function Footer() {
   const socialLeft = [
     { name: '@efection_instiki', icon: <Instagram size={28} />, link: '#' },
     { name: 'ecsi@instiki.ac.id', icon: <Mail size={28} />, link: 'mailto:ecsi@instiki.ac.id' },
-    { name: '@ecsi_instiki', icon: <Globe size={28} />, link: '#' },
+    { name: '(+62) 896-7042-9724 (Ayu)', icon: <MessageCircle size={28} />, link: '#' },
   ];
 
   // Data Link Sosmed Tengah
   const socialRight = [
-    { name: '@ecsi_instiki', icon: <MessageCircle size={28} />, link: '#' },
-    { name: '@ecsi_instiki', icon: <Facebook size={28} />, link: '#' },
-    { name: '@ecsi_instiki', icon: <Twitter size={28} />, link: '#' },
   ];
 
   return (

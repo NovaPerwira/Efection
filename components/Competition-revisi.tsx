@@ -28,17 +28,56 @@ const faqs = [
   {
     question: "Who can participate in the competition?",
     answer:
-      "The competition is open to students from all educational institutions. Please check specific eligibility requirements in the event guidelines.",
+      "EFECTION Vol. IV is the first EFECTION to ever reach the international public. With it, we deliver multiple competitions with their own level of reach: Our speech, and storytelling competition is open for both junior highschool and senior highschool in Bali; Our debate competition is for any universities all around Bali; and finally, our Story Writing competition is open for the international public from all walks of life.",
   },
   {
     question: "How do I register?",
-    answer:
-      "You can register directly through our official website by filling out the registration form and completing the payment process.",
-  },
+    answer: (
+      <>
+        Participants who are ready to take on the challenges and opportunities of <strong>EEFCTION Vol. IV</strong> may register through the links below:
+        <br /><br />
+        
+        🔹 <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSevBO-Wm3H_U2zQRjZt63FFl6pGCAYKxUw63WOwnAwvl7WTcA/viewform" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline font-semibold hover:text-yellow-200 transition"
+        >
+          Register for the Regional Competition (Debate, Speech, Storytelling)
+        </a>
+
+        <br /><br />
+
+        🔹 <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfnS_mIXivrGGbYp2DFvacLxVK_TCZpZ6QzKlITBkZZtfSHcpw/viewform"
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline font-semibold hover:text-yellow-200 transition"
+        >
+          Register for the International Competition (Story Writing)
+        </a>
+      </>
+    ),
+  }, 
   {
     question: "When is the submission deadline?",
     answer:
-      "All submissions must be completed before the deadline stated on our timeline page. Late entries will not be accepted.",
+      "The preliminary submission deadline for the Speech & Storytelling Competition is April 17, 2026. Participants are required to upload their performance video to YouTube. The submission must include the YouTube video link as well as the performance script. \n The submission deadline for the Story Writing Competition is May 2, 2026. Participants may submit multiple stories until the deadline, however, each story must be submitted as a separate entry.",
+  },
+    {
+    question: "What is ECSI?",
+    answer:
+      "ECSI is the abbreviation for the English Club of INSTIKI, a student club based in INSTIKI. This is a place where those who sought to find an English speaking Community can come and meet, share, and connect, all for one reason: their love for the English language.",
+  },
+  {
+    question: "What is EFECTION?",
+    answer:
+      "EFECTION, short for ECSI English Festival Competition, is an annual, yearly-held, competition held by the English Club of INSTIKI. It is a place where English enthusiasts can meet, fight, and improve themselves. EFECTION has entered it's 4th year being held consecutively, and with it it brings many improvements.",
+  },
+  {
+    question: "What is new with EFECTION Vol. IV?",
+    answer:
+      "EFECTION Vol. IV brings forthwith many improvements to the yearly-held EFECTION. The biggest improvement Vol. IV has is its new international reach. Vol. IV also introduces the preliminary system for speech and storytelling competitions to allow it to be open to a wider range of speakers and storytellers.",
   },
 ]
 
@@ -224,7 +263,7 @@ export default function CompetitionSection() {
           <img
             src="/images/FAQ/content.png"
             alt="FAQ"
-            className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20"
+            className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20 mt-25"
           />
         </motion.div>
 
@@ -444,7 +483,7 @@ export default function CompetitionSection() {
 // ==========================================
 // HELPER COMPONENT: FAQ ITEM
 // ==========================================
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+function FAQItem({ question, answer }: { question: string; answer: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
