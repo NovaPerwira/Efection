@@ -27,7 +27,7 @@ const timelineEvents = [
   },
   {
     id: 4,
-    date: "17 & 25 May",
+    date: "17 & 24 May",
     title: "D-Day",
     description: "The final culmination. The new era is established.",
     align: "bottom"
@@ -53,7 +53,7 @@ export default function CulturalTimeline() {
   const bgPos = useTransform(smoothProgress, [0, 1], ["0% 0%", "100% 0%"]);
 
   return (
-    <section ref={targetRef} className="relative py-10 h-[400vh] bg-[#1a1614]">
+    <section ref={targetRef} className="relative py-10 h-[400vh] bg-[#211c19]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Background Texture */}
@@ -65,10 +65,10 @@ export default function CulturalTimeline() {
           className="absolute inset-0 z-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-900/40 via-[#1a1614] to-[#1a1614]"
         />
 
-        <motion.div style={{ x }} className="relative flex gap-20 px-[15vw] items-center z-10">
+        <motion.div style={{ x }} className="relative flex gap-10 px-[15vw] items-center z-10">
           
           {/* PROGRESS PATH LAYER */}
-          <div className="absolute top-1/2 left-0 w-[4000px] h-40 -translate-y-1/2 pointer-events-none">
+          <div className="absolute top-1/2 left-0 w-[4000px] h-10 -translate-y-1/3 pointer-events-none">
              <svg width="100%" height="100%" viewBox="0 0 4000 200" preserveAspectRatio="none">
                <defs>
                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">

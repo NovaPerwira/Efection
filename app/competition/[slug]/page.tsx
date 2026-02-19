@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-
+import Footer from "@/components/Footer";
 
 /* ================= DATA ================= */
 
@@ -20,7 +20,7 @@ const competitions = {
     image: "/images/competitions/STORYTELLING_SMP.png",
     imageWidth: 350,imageHeight: 200,
     description:
-      "The SMP Story Telling Competition is held for the first time at EFECTION IV. Participants will orally deliver an English story before the judges, focusing on pronunciation, expression, and storytelling performance.",
+      "The Middle School Storytelling Competition is being introduced for the first time at EFECTION IV. Participants will orally present a story in English before the judges, with assessment focusing on pronunciation, expression, confidence, and overall storytelling performance."
   },
 
   "high-storytelling": {
@@ -32,7 +32,7 @@ const competitions = {
     image: "/images/competitions/STORYTELLING_SMA.png",
     imageWidth: 480,imageHeight: 350,
     description:
-      "The SMA Story Telling Competition has been regularly held since 2019. Participants will deliver an English story, emphasizing storytelling skills and communicative delivery.",
+      "The High School Storytelling Competition has been consistently held since 2019. Participants will deliver an English story, emphasizing strong storytelling techniques, clear pronunciation, and effective communicative delivery."
   },
 
   /* ================= SPEECH ================= */
@@ -46,7 +46,7 @@ const competitions = {
     image: "/images/competitions/SPEECH_SMP.png",
     imageWidth: 500,imageHeight: 340,
     description:
-      "The SMP Speech Competition is introduced for the first time at EFECTION IV. Participants will deliver a structured English speech based on the given theme and competition rules.",
+      "The Middle School Speech Competition is newly introduced at EFECTION IV. Participants will present a structured speech in English based on the designated theme and competition guidelines.",
   },
 
   "high-speech": {
@@ -58,21 +58,21 @@ const competitions = {
     image: "/images/competitions/SPEECH_SMA.png",
     imageWidth: 500,imageHeight: 340,
     description:
-      "The SMA Speech Competition is a regularly held competition. Participants will deliver an English speech focusing on structure, content, and persuasive delivery.",
+      "The High School Speech Competition is a recurring program at EFECTION. Participants will deliver an English speech with emphasis on organization, content development, language proficiency, and persuasive delivery.",
   },
 
   /* ================= DEBATE ================= */
 
   "university-debate": {
     title: "Debate",
-    subtitle: "University",
-    price: "IDR. 350,000",
-    dateDay: "24-31",
+    subtitle: "Varsity (Regional)",
+    price: "IDR. 300,000",
+    dateDay: "24 & 31",
     dateMonth: "May 2026",
     image: "/images/competitions/DEBATE.png",
     imageWidth: 580,imageHeight: 340,
     description:
-      "The University Debate Competition is held for the first time at EFECTION IV using the British Parliamentary format. Participants will debate in teams in English based on the assigned motions and debate system.",
+      "The Varsity Debate Competition is being held for the first time at EFECTION IV and will follow the British Parliamentary format. Participants will compete in teams, debating assigned motions in English in accordance with the established debate system and rules.",
   },
 
   /* ================= STORY WRITING ================= */
@@ -80,13 +80,13 @@ const competitions = {
   "open-story-writing": {
     title: "Story Writing",
     subtitle: "Open Category",
-    price: "IDR. 50,000",
+    price: "USD 8/10/12",
     dateDay: "24-31",
     dateMonth: "May 2026",
     image: "/images/competitions/STORYWRITING.png",
     imageWidth: 500,imageHeight: 380,
     description:
-      "The Story Writing Competition invites participants to write an original story in English based on the given theme. Creativity, originality, and language use will be evaluated.",
+      "The Story Writing Competition invites participants to compose an original story in English based on the provided theme. Entries will be evaluated on creativity, originality, coherence, and effective use of language.",
   },
 
 };
@@ -109,6 +109,8 @@ export default function CompetitionDetailPage() {
     );
   }
 
+const isOpenStory = slug === "open-story-writing";  
+
   return (
 
     <section className="relative min-h-screen bg-[#C09B6F] overflow-hidden">
@@ -118,10 +120,10 @@ export default function CompetitionDetailPage() {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "url('/images/aboutus/bg_overlay.png')",
+            "url('/images/Hero/seamless3.png')",
         }}
       />
-
+      <div className="absolute inset-0 bg-[#2a241e]/50 z-0 pointer-events-none" />
       {/* CONTAINER */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
 
@@ -179,7 +181,7 @@ export default function CompetitionDetailPage() {
             {/* SUBTITLE */}
             <p
               className="
-              text-yellow-300
+              text-[#F4D35E]
               text-2xl
               mt-3
               font-[var(--font-plus-jakarta)]
@@ -197,6 +199,7 @@ export default function CompetitionDetailPage() {
               text-xl
               leading-relaxed
               max-w-md
+              text-justify
               font-[var(--font-plus-jakarta)]
               "
             >
@@ -208,7 +211,7 @@ export default function CompetitionDetailPage() {
             <div
               className="
               mt-10
-              text-yellow-400
+              text-[#F4D35E]
               text-5xl
               font-bold
               drop-shadow
@@ -222,36 +225,46 @@ export default function CompetitionDetailPage() {
             {/* BUTTONS */}
             <div className="flex gap-6 mt-10">
 
-              <button
+              <a
+                href="https://drive.google.com/drive/folders/1qrJfH5YMzKgjMeXhJKwfhIyVfWQ8D2Fq?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
-                bg-yellow-300
-                px-8 py-4
-                rounded-xl
-                text-2xl
-                shadow-[0_6px_0_rgba(0,0,0,0.3)]
-                hover:translate-y-[-3px]
-                transition
-                font-[var(--font-plus-jakarta)]
+                  bg-[#F4D35E]
+                  px-8 py-4
+                  rounded-xl
+                  text-2xl
+                  shadow-[0_6px_0_rgba(0,0,0,0.3)]
+                  hover:translate-y-[-3px]
+                  transition
+                  font-[var(--font-plus-jakarta)]
+                  inline-block
                 "
               >
                 Learn More!
-              </button>
+              </a>
 
-
-              <button
+              <a
+                  href={
+                    isOpenStory
+                      ? "https://docs.google.com/forms/d/e/1FAIpQLSfnS_mIXivrGGbYp2DFvacLxVK_TCZp6QzKlITBkZZtfSHcpw/viewform"
+                      : "https://docs.google.com/forms/d/e/1FAIpQLSevBO-Wm3H_U2zQRjZt63FFl6pGCAYKxUw63WOwnAwvl7WTcA/viewform"
+                  }
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
-                bg-yellow-300
-                px-8 py-4
-                rounded-xl
-                text-2xl
-                shadow-[0_6px_0_rgba(0,0,0,0.3)]
-                hover:translate-y-[-3px]
-                transition
-                font-[var(--font-plus-jakarta)]
-                "
+                  bg-[#F4D35E]
+                  px-8 py-4
+                  rounded-xl
+                  text-2xl
+                  shadow-[0_6px_0_rgba(0,0,0,0.3)]
+                  hover:translate-y-[-3px]
+                  transition
+                  font-[var(--font-plus-jakarta)]
+                  "
               >
                 Register!
-              </button>
+              </a>
             </div>
           </div>
 
@@ -261,7 +274,7 @@ export default function CompetitionDetailPage() {
 
             <div
               className="
-              text-yellow-400
+              text-[#F4D35E]
               text-[100px]
               leading-none
               font-bold
@@ -272,12 +285,12 @@ export default function CompetitionDetailPage() {
             </div>
 
 
-            <div className="w-full h-[6px] bg-yellow-400 my-4 rounded-full" />
+            <div className="w-full h-[6px] bg-[#F4D35E] my-4 rounded-full" />
 
 
             <div
               className="
-              bg-yellow-300
+              bg-[#F4D35E]
               px-4 py-3
               rounded-lg
               text-2xl
@@ -294,7 +307,7 @@ export default function CompetitionDetailPage() {
         </div>
 
       </div>
-
+      <Footer />
     </section>
     
   );

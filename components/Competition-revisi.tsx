@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import Image from "next/image";
 import CompetitionCard from "@/components/CompetitionCard";
+import Footer from "@/components/Footer";
 
 // ==========================================
 // SHARED ANIMATIONS & DATA
@@ -22,6 +23,24 @@ const fadeRight = {
   hidden: { opacity: 0, x: 50 },
   visible: { opacity: 1, x: 0 },
 };
+
+const faqs = [
+  {
+    question: "Who can participate in the competition?",
+    answer:
+      "The competition is open to students from all educational institutions. Please check specific eligibility requirements in the event guidelines.",
+  },
+  {
+    question: "How do I register?",
+    answer:
+      "You can register directly through our official website by filling out the registration form and completing the payment process.",
+  },
+  {
+    question: "When is the submission deadline?",
+    answer:
+      "All submissions must be completed before the deadline stated on our timeline page. Late entries will not be accepted.",
+  },
+]
 
 const features = [
   {
@@ -67,7 +86,7 @@ export default function CompetitionSection() {
   // Scroll Progress untuk KE-EMPAT section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"] 
+    offset: ["start start", "end end"]
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -78,18 +97,22 @@ export default function CompetitionSection() {
   const combinedPath = "M 1440,0 C 1440,300 200,200 200,500 C 200,800 1200,700 800,1000 C 400,1300 1200,1300 1200,1500 C 1200,1700 200,1750 200,2000 C 200,2250 1200,2250 1200,2500 C 1200,2750 200,2750 200,3000 C 200,3250 1200,3250 1200,3500 C 1200,3750 200,3750 200,4000";
 
   return (
-    <section 
-      ref={sectionRef} 
-      id="event-showcase" 
-      // Background Parallax menyatu di seluruh section
-      className="bg-[#3b352d] bg-fixed relative w-full overflow-hidden flex flex-col items-center text-[#e2ddd4]"
-      style={{
-        backgroundImage: "url('/images/aboutus/bg_overlay.png')",
-        backgroundSize: '280px 280px',
-      }}
+    <section
+      ref={sectionRef}
+      id="event-showcase"
+      className="relative w-full overflow-hidden flex flex-col items-center text-[#e2ddd4]"
     >
+
+      {/* Background Layer */}
+    <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1614]/35 via-[#C09B6F]/50 to-[#f9c88b]/50"></div>
+    </div>
       {/* OVERLAY GELAP */}
-      <div className="absolute inset-0 bg-[#3b352d]/50 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#2a241e]/65 z-0 pointer-events-none" />
 
       {/* --- LAYER PROGRESS PATH KESELURUHAN --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-[5]">
@@ -109,13 +132,19 @@ export default function CompetitionSection() {
       {/* 1. COMPETITIONS */}
       {/* ========================================== */}
       <motion.div
-        className="relative z-10 max-w-7xl w-full px-6 py-24 min-h-screen flex flex-col items-center justify-center"
+        id = "comp" className="relative z-10 max-w-7xl w-full px-6 py-24 min-h-screen flex flex-col items-center justify-center"
         initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ staggerChildren: 0.2 }}
       >
-        <motion.h1 variants={fadeUp} className="text-center mb-24 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]" style={{ fontFamily: 'Grenze, serif', fontSize: '80px', color: '#fff' }}>
+        <motion.h1
+          variants={fadeUp}
+          className="text-center mb-10 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)] text-white"
+          style={{
+            fontFamily: 'Grenze, serif',
+            fontSize: 'clamp(80px, 8vw, 128px)'
+          }}
+        >
           Our Competitions
         </motion.h1>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-0 gap-y-20 w-full items-start">
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-8">
             <h4 className="h4 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]">Middle School</h4>
@@ -124,7 +153,7 @@ export default function CompetitionSection() {
           </motion.div>
 
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-8">
-            <h4 className="h4 text-[#F4D35E] drop-shadow-[0_5px_1px_rgba(0,0,0,0.5)]">High School</h4>
+            <motion.h4 className="text-[#F4D35E] drop-shadow-[0_5px_1px_rgba(0,0,0,0.5)]">High School</motion.h4>
             <CompetitionCard title="Story telling" w={310} h={427} slug="high-storytelling" icon="/images/competitions/STORYTELLING_SMA.png" iconSize={200}/>
             <CompetitionCard title="Speech" w={310} h={286} slug="high-speech" icon="/images/competitions/SPEECH_SMA.png" iconSize={150}/>
           </motion.div>
@@ -141,7 +170,7 @@ export default function CompetitionSection() {
       {/* ========================================== */}
       {/* 2. WHY CHOOSE US */}
       {/* ========================================== */}
-      <div className="relative z-20 w-full border-t border-[#FEDB73]/10 py-24 min-h-screen flex flex-col items-center justify-center">
+      <div className="relative z-20 w-full py-24 min-h-screen flex flex-col items-center justify-center">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FEDB73]/5 blur-[120px] rounded-full pointer-events-none z-[-1]"></div>
 
         <div className="w-full max-w-[1200px] px-4 md:px-8 xl:px-12 flex flex-col items-center">
@@ -169,7 +198,7 @@ export default function CompetitionSection() {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#F4D35E]/60 to-transparent border border-[#F4D35E]/60 flex items-center justify-center text-[#F4D35E] mb-6 group-hover:scale-110 group-hover:text-white group-hover:border-[#F4D35E] transition-all duration-500 ease-out">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif text-[#e2ddd4] mb-4 tracking-wide group-hover:text-white transition-colors">{feature.title}</h3>
+                <h4 className="text-xl md:text-2xl font-serif text-[#e2ddd4] mb-4 tracking-wide group-hover:text-white transition-colors">{feature.title}</h4>
                 <div className="h-[1px] w-8 bg-[#C09B6F]/50 mb-4 group-hover:w-16 group-hover:bg-[#FEDB73] transition-all duration-300"></div>
                 <p className="text-sm text-gray-300 font-light leading-relaxed tracking-wider group-hover:text-gray-100 transition-colors">{feature.description}</p>
               </motion.div>
@@ -181,43 +210,233 @@ export default function CompetitionSection() {
       {/* ========================================== */}
       {/* 3. FAQ */}
       {/* ========================================== */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center border-t border-[#FEDB73]/10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start w-full">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}
-            className="hidden md:block md:col-span-4 lg:col-span-5"
+    <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start w-full">
+        
+        {/* LEFT IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 80, damping: 18 }}
+          className="hidden md:block md:col-span-4 lg:col-span-5"
+        >
+          <img
+            src="/images/FAQ/content.png"
+            alt="FAQ"
+            className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20"
+          />
+        </motion.div>
+
+        {/* RIGHT CONTENT */}
+        <div className="col-span-full md:col-span-8 lg:col-span-7 text-right">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 80, damping: 18 }}
+            className="mb-4 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+            style={{
+              fontFamily: "Grenze, serif",
+              fontSize: "80px",
+              color: "#fff",
+              lineHeight: 1,
+            }}
           >
-            <img src="/images/FAQ/content.png" alt="FAQ" className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20" />
+            Frequently Asked Question
+          </motion.h1>
+
+          <motion.h4
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
+            className="text-[#FEDB73] mb-10 text-xl font-light tracking-wide"
+          >
+            Find answers to commonly asked questions about our competitions
+          </motion.h4>
+
+          {/* FAQ LIST */}
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.12,
+                },
+              },
+            }}
+            className="space-y-4"
+          >
+            {faqs.map((faq, index) => (
+              <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
           </motion.div>
-
-          <div className="col-span-full md:col-span-8 lg:col-span-7 text-right">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}
-              className="mb-4 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              style={{ fontFamily: 'Grenze, serif', fontSize: '80px', color: '#fff', lineHeight: 1 }}
-            >
-              Frequently Asked Question
-            </motion.h1>
-
-            <motion.h4 
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[#e2ddd4] mb-10 text-xl font-light tracking-wide"
-            >
-              Find answers to commonly asked questions about our competitions
-            </motion.h4>
-
-            <div className="space-y-4">
-              <FAQItem delay={0.2} />
-              <FAQItem delay={0.3} />
-              <FAQItem delay={0.4} />
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+      {/* ========================================== */}
+      {/* 4. ABOUT US */}
+      {/* ========================================== */}
+      <div
+        id="aboutus"
+        className="relative z-20 w-full py-24 min-h-screen flex items-center"
+      >
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-6 w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.15 }}
+        >
+          {/* ================= MOBILE STACK ================= */}
+          <div className="md:hidden space-y-12 text-center">
 
-     
+            <motion.h1
+              className="text-white drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              variants={fadeUp}
+              style={{ fontFamily: 'Grenze, serif', fontSize: '48px' }}
+            >
+              ABOUT US
+            </motion.h1>
 
+            <motion.h2
+              className="text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              variants={fadeUp}
+              style={{
+                fontFamily: 'Grenze, serif',
+                fontSize: '36px',
+                lineHeight: '1.1',
+              }}
+            >
+              English Festival Competition
+            </motion.h2>
+
+            <motion.p
+              className="text-[#e2ddd4] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              variants={fadeUp}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </motion.p>
+
+            <motion.div
+              className="space-y-8 text-[#e2ddd4]"
+              variants={fadeUp}
+            >
+              <div>
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
+                  Location
+                </h3>
+                <p>Instiki Campus</p>
+              </div>
+
+              <div>
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
+                  Prize Pool
+                </h3>
+                <p>IDR 13,500,000</p>
+              </div>
+
+              <div>
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
+                  Range
+                </h3>
+                <ul className="space-y-1">
+                  <li>Middle School</li>
+                  <li>High School</li>
+                  <li>Varsity</li>
+                  <li>Open Category</li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ================= DESKTOP GRID ================= */}
+          <div className="hidden md:grid grid-cols-12 gap-y-10 items-center">
+
+            <motion.h1
+              className="col-start-5 col-span-4 text-white drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              variants={fadeUp}
+              style={{ fontFamily: 'Grenze, serif', fontSize: '80px' }}
+            >
+              ABOUT US
+            </motion.h1>
+
+            <motion.h2
+              className="col-start-2 col-span-8 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+              variants={fadeUp}
+              style={{
+                fontFamily: 'Grenze, serif',
+                fontSize: '80px',
+                lineHeight: '1.1',
+              }}
+            >
+              English Festival Competition
+            </motion.h2>
+
+            <motion.div
+              className="col-start-11 col-span-2 row-start-2 row-span-4 relative w-[300px] h-[480px]"
+              variants={fadeRight}
+            >
+              <Image
+                src="/images/aboutus/photo.png"
+                alt="Effection IV event"
+                fill
+                className="object-cover rounded-md shadow-2xl shadow-black/60"
+              />
+            </motion.div>
+
+            <motion.p
+              className="col-start-2 col-span-8 text-[#e2ddd4]"
+              variants={fadeUp}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </motion.p>
+
+            <motion.div
+              className="col-start-2 col-span-9 grid grid-cols-9 text-[#e2ddd4]"
+              variants={fadeUp}
+            >
+              <div className="col-span-3">
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
+                  Location
+                </h3>
+                <p>Instiki Campus</p>
+              </div>
+
+              <div className="col-span-3">
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
+                  Prize Pool
+                </h3>
+                <p>IDR 13,500,000</p>
+              </div>
+
+              <div className="col-span-3">
+                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
+                  Range
+                </h3>
+                <ul className="list-disc list-inside">
+                  <li>Middle School</li>
+                  <li>High School</li>
+                  <li>Varsity</li>
+                  <li>Open Category</li>
+                </ul>
+              </div>
+            </motion.div>
+
+          </div>
+        </motion.div>
+      </div>
+        <Footer />
     </section>
   )
 }
@@ -225,34 +444,56 @@ export default function CompetitionSection() {
 // ==========================================
 // HELPER COMPONENT: FAQ ITEM
 // ==========================================
-function FAQItem({ delay = 0 }: { delay?: number }) {
-  const [open, setOpen] = useState(false);
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6, delay: delay }}
-      className="bg-[#F4D35E] rounded-xl shadow-md overflow-hidden text-left"
+    <motion.div
+      layout
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 },
+      }}
+      transition={{ type: "spring", stiffness: 90, damping: 20 }}
+      className="bg-[#FEDB73]/60 backdrop-blur-md border border-[#FEDB73]/20 rounded-xl p-5 shadow-lg"
     >
-      <button onClick={() => setOpen(!open)} className="w-full flex justify-between items-center px-6 py-4">
-        <h3 className="text-[#3b2f1e] text-lg md:text-xl font-bold">
-          Lorem Ipsum
-        </h3>
-        <motion.span animate={{ rotate: open ? 90 : 0 }} transition={{ duration: 0.25 }} className="text-2xl text-[#3b2f1e] font-black">
-          &gt;
+      {/* BUTTON */}
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="w-full flex justify-between items-center text-right text-white font-semibold text-lg"
+      >
+        {question}
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          ▼
         </motion.span>
-      </button>
+      </motion.button>
 
-      <AnimatePresence>
-        {open && (
+      {/* ANSWER */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="px-6 pb-4 text-[#3b2f1e] text-sm md:text-base font-medium"
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              duration: 0.35,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+            className="overflow-hidden"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed do eiusmod tempor incididunt ut labore.
+            <div className="pt-4 text-[#e2ddd4] text-left leading-relaxed">
+              {answer}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
-  );
+  )
 }

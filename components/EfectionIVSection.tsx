@@ -21,7 +21,7 @@ export default function EfectionIVSection({
 
       {/* Vertical Stripes Pattern */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/bg.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
 
       {/* Central Emblem Silhouette (Decorative Background) */}
@@ -49,13 +49,15 @@ export default function EfectionIVSection({
         <div className="flex flex-col items-center justify-center leading-tight">
           <motion.h1
             className="
-              text-4xl md:text-7xl xl:text-8xl 2xl:text-9xl
               font-serif
               tracking-[0.12em]
               font-bold
               mb-3
               drop-shadow-lg
             "
+            style={{
+              fontSize: "clamp(48px, 8vw, 144px)"
+            }}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -72,6 +74,9 @@ export default function EfectionIVSection({
               text-[#e2ddd4]
               tracking-wide
             "
+            style={{
+              fontSize: "clamp(32px, 8vw, 144px)"
+            }}
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -172,13 +177,13 @@ export default function EfectionIVSection({
 
       {/* Left Column */}
       <SideImage
-        src="/images/Hero/psrt 1.webp"
-        className="top-4 -left-4 md:top-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
+        src="/images/Hero/Group 5.png"
+        className="top-16 -left-4 md:top-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.2}
         rotation={-5}
       />
       <SideImage
-        src="/images/Hero/psrt 3.webp"
+        src="/images/Hero/Group 6.png"
         className="bottom-4 -left-4 md:bottom-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.4}
         rotation={5}
@@ -186,13 +191,13 @@ export default function EfectionIVSection({
 
       {/* Right Column */}
       <SideImage
-        src="/images/Hero/psrt 2.webp"
-        className="top-4 -right-4 md:top-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
+        src="/images/Hero/Group 7.png"
+        className="top-16 -right-4 md:top-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.3}
         rotation={5}
       />
       <SideImage
-        src="/images/Hero/psrt 4.webp"
+        src="/images/Hero/Group 8.png"
         className="bottom-4 -right-4 md:bottom-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.5}
         rotation={-5}
@@ -204,16 +209,18 @@ export default function EfectionIVSection({
 function SideImage({ src, className, delay, rotation = 0 }: SideImageProps) {
   return (
     <motion.div
-      className={`absolute z-10 w-24 h-32 sm:w-32 sm:h-44 md:w-40 md:h-52 lg:w-48 lg:h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 ${className}`}
+      className={`absolute z-10 ${className}`}
+      style={{
+        width: "clamp(150px, 18vw, 340px)", // fluid scaling
+        aspectRatio: "4 / 5" // keeps consistent portrait shape
+      }}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.6 }}
       transition={{ delay, duration: 0.8 }}
     >
       <motion.div
-        animate={{
-          y: [0, -10, 0],
-        }}
+        animate={{ y: [0, -12, 0] }}
         transition={{
           duration: 4,
           repeat: Infinity,
@@ -227,17 +234,16 @@ function SideImage({ src, className, delay, rotation = 0 }: SideImageProps) {
           src={src}
           alt="Participant"
           className="
-            w-full h-full object-contain 
-            transition-all duration-500 ease-in-out 
-            hover:scale-105 hover:brightness-110 
-            hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] 
-            cursor-pointer 
+            w-full h-full object-contain
+            transition-all duration-500 ease-in-out
+            hover:scale-105 hover:brightness-110
+            hover:shadow-[0_0_30px_rgba(255,215,0,0.4)]
           "
           onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
+            (e.target as HTMLImageElement).style.display = "none";
           }}
         />
       </motion.div>
     </motion.div>
-  )
+  );
 }

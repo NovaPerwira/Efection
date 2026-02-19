@@ -20,23 +20,10 @@ const HamburgerIcon = () => (
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isAnnouncementOpen, setAnnouncementOpen] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
-  // --- LOGIC BARU: Auto Close Announcement setelah 10 Detik ---
-  useEffect(() => {
-    // Set timer selama 15000ms (15 detik)
-    const timer = setTimeout(() => {
-      setAnnouncementOpen(false);
-    }, 15000);
-
-    // Membersihkan timer jika komponen di-unmount sebelum 10 detik
-    return () => clearTimeout(timer);
-  }, []); // Array kosong [] memastikan ini hanya jalan sekali saat page load
-  // ------------------------------------------------------------
-
-  // --- Logic Cursor Smooth (Spring Physics) ---
+  // --- Smooth Cursor ---
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -51,11 +38,7 @@ export default function Navbar() {
     };
 
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('mousemove', moveCursor);
@@ -67,13 +50,6 @@ export default function Navbar() {
     };
   }, [cursorX, cursorY]);
 
-  // Varian animasi Framer Motion
-  const announcementVariants = {
-    hidden: { height: 0, opacity: 0, marginTop: 0, overflow: 'hidden' },
-    visible: { height: 'auto', opacity: 1, marginTop: '0px' },
-    exit: { height: 0, opacity: 0, marginTop: 0, overflow: 'hidden' }
-  };
-
   const navVariants = {
     top: {
       width: '100%',
@@ -83,13 +59,13 @@ export default function Navbar() {
     scrolled: {
       width: '100%',
       maxWidth: '64rem',
-      y: isAnnouncementOpen ? 0 : -10
+      y: -10
     }
   };
 
   return (
     <>
-      {/* --- Smooth Custom Cursor --- */}
+      {/* --- Custom Cursor --- */}
       <motion.div
         className="fixed top-0 left-0 rounded-full border border-white/20 pointer-events-none z-[9999]"
         style={{
@@ -100,61 +76,29 @@ export default function Navbar() {
           width: isHovering ? 80 : 50,
           height: isHovering ? 80 : 50,
           background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
-          opacity: 1,
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.2 }}
       />
 
       <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center transition-all duration-300">
 
-        {/* --- Announcement Bar with AnimatePresence --- */}
-        <AnimatePresence>
-          {isAnnouncementOpen && (
-            <motion.div
-              variants={announcementVariants}
-              initial="visible"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }} // Diperlambat sedikit biar smooth saat hilang
-              className="relative w-full flex justify-center"
-            >
-              <div className="relative flex items-center justify-center w-full rounded-b-full p-2 text-center text-sm mb border border-white/10 shadow-lg shadow-black/20 backdrop-blur-md"
-                style={{
-                  backgroundImage: "url('/images/Hero/Header.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}>
-                <span className="bg-white/10 text-black text-xs font-semibold px-2 py-1 rounded-full mr-3">Announcement</span>
-                <p className="text-black hidden sm:inline">Unveiling LayerEdge's fresh look with our expanding vision!</p>
-                <a href="#" className="text-black font-semibold ml-2 underline">Read more &rarr;</a>
-                <button onClick={() => setAnnouncementOpen(false)} className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-black hover:text-gray-800">
-                  <CloseIcon />
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* --- Main Navbar --- */}
         <motion.nav
           variants={navVariants}
           animate={isScrolled ? "scrolled" : "top"}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className={`
-            relative flex items-center justify-between mx-auto 
-            backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/5
-            h-16 px-6 mt-4 transition-all duration-300
-            ${isScrolled ? 'rounded-2xl ' : 'rounded-full'}
-          `}
+          transition={{ type: "spring", stiffness: 100 }}
+          className="relative flex items-center justify-between mx-auto backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/5 h-16 px-6 mt-4 transition-all duration-300 rounded-full"
           style={{
-            backgroundImage: !isScrolled ? "url('/images/Hero/Header.png')" : "opacity-50",
+            backgroundImage: "url('/images/Hero/Header.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          {/* Logo Text Left */}
+          {/* Logo */}
           <div className="relative z-10 flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-black tracking-tight"
+            <Link
+              href="/"
+              className="text-2xl font-bold text-black tracking-tight"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
@@ -162,62 +106,52 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* Desktop Links */}
           <div className="hidden md:flex items-center flex-1 justify-center px-8">
-            
-            {/* Left Links */}
-            <div className="flex items-center space-x-3 mr-4">
-              {['Hero', 'About'].map((item) => (
-                <motion.a 
-                  key={item} 
-                  href={item === 'Hero' ? '/' : `/#${item.toLowerCase()}`}
-                  className="relative px-5 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/10 backdrop-blur-md border border-white/20 shadow-sm hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] hover:shadow-[0_0_15px_rgba(254,219,115,0.3)] transition-all duration-300"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </div>
+
+            <div className="flex items-center space-x-3">
+              {/* Hero */}
+              <motion.a
+                href="/"
+                className="px-13 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/10 backdrop-blur-md border border-white/20 hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] transition-all duration-300"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                Home
+              </motion.a>
 
             {/* Center Logo Icon */}
             <div className="flex-shrink-0 mx-2 transform hover:scale-110 transition-transform duration-300 cursor-pointer">
               <img src="/images/Hero/nav-logo.png" alt="Logo" className="h-9 w-auto object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" />
             </div>
-
-            {/* Right Links */}
-            <div className="flex items-center space-x-3 ml-4">
-              {['Competition'].map((item) => (
-                <motion.a 
-                  key={item} 
-                  href="/#competition"
-                  className="relative px-5 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/20 backdrop-blur-md border border-white/20 shadow-sm hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] hover:shadow-[0_0_15px_rgba(254,219,115,0.3)] transition-all duration-300"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
+              {/* Competition -> #comp */}
+              <motion.a
+                href="/#comp"
+                className="px-5 py-2 rounded-full text-sm font-semibold text-gray-100 bg-black/20 backdrop-blur-md border border-white/20 hover:bg-black/60 hover:border-[#FEDB73]/60 hover:text-[#FEDB73] transition-all duration-300"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+              >
+                Competition
+              </motion.a>
             </div>
-            
           </div>
 
           {/* Desktop CTA */}
-          <div className="relative z-10 hidden md:block">
-            <button
+          <div className="hidden md:block">
+            <Link
+              href="https://docs.google.com/forms/d/e/1FAIpQLSevBO-Wm3H_U2zQRjZt63FFl6pGCAYKxUw63WOwnAwvl7WTcA/viewform?usp=dialog"
               className="bg-black text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 hover:scale-105 active:scale-95 transition-all duration-200 shadow-md"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
             >
-              <Link href="/login">Join us</Link>
-            </button>
+              Join Us
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <div className="relative z-10 flex md:hidden">
+          <div className="flex md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-full text-black hover:bg-black/5 transition-colors"
@@ -228,66 +162,40 @@ export default function Navbar() {
         </motion.nav>
       </header>
 
-      {/* --- Mobile Menu Overlay --- */}
+      {/* --- Mobile Menu --- */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            key="mobile-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
-          />
-        )}
-        {isMobileMenuOpen && (
-          <motion.div
-            key="mobile-sidebar"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#3b352d]/85 shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
-          >
-            <div className="flex justify-between items-center mb-10">
-              <h2 className="text-2xl font-bold text-white tracking-tight">Efection</h2>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 -mr-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div className="space-y-2">
-              {['Hero', 'About', 'Competition', 'Join Us'].map((item, idx) => (
-                <motion.a
-                  key={item}
-                  href="/#competition"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + (idx * 0.05) }}
-                  className="block px-4 py-3 rounded-xl text-lg font-medium text-gray-300 hover:text-black hover:bg-white transition-all duration-200"
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+            />
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-10"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#3b352d]/85 shadow-2xl z-50 p-6 md:hidden border-l border-white/10"
             >
-              <button className="w-full bg-white text-black px-4 py-3.5 rounded-xl text-base font-bold hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] transition-all">
-                Join Us Now
-              </button>
+              <div className="flex justify-between items-center mb-10">
+                <h2 className="text-2xl font-bold text-white">Efection</h2>
+                <button onClick={() => setMobileMenuOpen(false)}>
+                  <CloseIcon />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <a href="/" className="block text-white text-lg">Hero</a>
+                <a href="/#comp" className="block text-white text-lg">Competition</a>
+              </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
   );
 }
-

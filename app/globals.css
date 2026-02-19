@@ -9,23 +9,23 @@
       --color-primary-glow: #FEDB73;
     }
     h1 {
-      font-family: 'Grenze', serif;
-      
+      font-family: 'Grenze', sans-serif;
+      font-size: 128px;
     }
 
     h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      
+      font-size: 80px;
     }
 
     h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      
+      font-size: 50px;
     }
 
     h4 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      
+      font-size: 32px;
       line-height: 1.2;
     }
 

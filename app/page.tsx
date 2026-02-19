@@ -5,13 +5,12 @@ import { motion } from 'framer-motion'
 import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/StickyZoom";
-import AboutSection from "@/components/AboutUs";
-import FAQ from "@/components/FAQ";
+import AboutSection from "@/components/#Obsolete-AboutUs";
+import FAQ from "@/components/#Obsolete-FAQ";
 // import Competition from "@/components/Competition";
 import Timeline from "@/components/Timeline";
-import Footer from "@/components/Footer";
 import Competition from "@/components/Competition-revisi";
-import WhyChooseUsSection from "@/components/whychooseus";
+import WhyChooseUsSection from "@/components/#Obsolete-whychooseus";
 import CompetitionSection from "@/components/Competition-revisi";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
@@ -73,7 +72,12 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
     >
       {/* Text Container with Typewriter */}
       <div className="mb-12 relative h-16 flex items-center justify-center">
-        <h1 className="text-4xl md:text-6xl font-mono font-bold tracking-widest relative flex items-center">
+        <h1
+          className="font-mono font-bold tracking-widest relative flex items-center"
+          style={{
+            fontSize: "clamp(48px, 6vw, 64px)"
+          }}
+        >
           <span style={{ color: 'var(--color-primary)' }}>
             {displayedText}
           </span>
@@ -95,7 +99,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
       </div>
 
       {/* Percentage Text / Status */}
-      <div className="mt-4 font-mono text-sm tracking-widest" style={{ color: 'var(--text-muted)' }}>
+      <div className="mt-4 font-mono text-sm tracking-widest" style={{ color: '#ffffff' }}>
         <div className="flex justify-between w-64 md:w-96">
           <span>{progress < 100 ? "INITIALIZING..." : "SYSTEM READY"}</span>
           <span>{progress}%</span>
@@ -119,18 +123,14 @@ export default function Home() {
   };
 
   // Define the content for the "Next Section" that will parallax up
-  
-
 
   const NextSectionContent = (
   <div className="relative h-[120vh] w-full flex items-center justify-center overflow-hidden bg-[#2a241e]">
     {/* Background dengan Overlay Transisi */}
     <div className="absolute inset-0 z-0">
-      <img 
-        src="images/Hero/bg.png" 
-        alt="Background" 
-        className="absolute inset-0 w-full h-[120%] object-cover opacity-30" 
-      />
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#C09B6F]/50 via-[#C09B6F]/50 to-[#1a1614]"></div>
     </div>
@@ -153,7 +153,7 @@ export default function Home() {
       {/* Judul Utama */}
       {/* Judul Utama dengan Efek Gradient Emas */}
         <h2 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-tight">
-          You Our Next<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C09B6F] via-[#FEDB73] to-[#FEDB73]">Winner</span>
+          You're Our Next<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C09B6F] via-[#FEDB73] to-[#FEDB73]"> Winner</span>
         </h2>
 
         {/* CTA: Statement "The Next Winner" */}
@@ -164,9 +164,16 @@ export default function Home() {
           </p>
 
           {/* Button Action */}
-          <button className="px-8 py-4 bg-black text-white rounded-xl font-bold uppercase tracking-tighter hover:bg-[#d4b589] transition-all transform hover:scale-105 duration-300 shadow-[0_0_20px_rgba(192,155,111,0.4)]">
-            Claim Your Throne
-          </button>
+        <button
+          onClick={() => {
+            document
+              .getElementById("comp")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="px-8 py-4 bg-black text-white rounded-xl font-bold uppercase tracking-tighter hover:bg-[#d4b589] transition-all transform hover:scale-105 duration-300 shadow-[0_0_20px_rgba(192,155,111,0.4)]"
+        >
+          Claim Your Throne
+        </button>
         </div>
     </div>
 
@@ -202,8 +209,6 @@ export default function Home() {
              <CompetitionSection />
             {/* <FAQ /> */}
            
-            <AboutSection />
-            <Footer />
           </div>
         </>
       )}
