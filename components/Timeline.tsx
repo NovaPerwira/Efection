@@ -100,8 +100,8 @@ export default function CulturalTimeline() {
           </div>
 
           {/* TITLE CARD */}
-          <div className="flex-shrink-0 w-[30vw] mr-20">
-            <h2 className="text-7xl md:text-9xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F4E04D] to-[#bf9b30]">
+          <div className="flex-shrink-0  mr-20">
+            <h2 className="text-7xl px-10 md:text-9xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F4E04D] to-[#bf9b30]">
               Our<br/>Journey
             </h2>
           </div>
@@ -117,7 +117,7 @@ export default function CulturalTimeline() {
                style={{ opacity: useTransform(smoothProgress, [0.9, 1], [0, 1]) }}
                className="text-5xl font-serif text-[#F4E04D] border-l-8 border-[#F4E04D] pl-8"
              >
-               The New Era<br/>Has Arrived
+               The New Era<br/>Begins
              </motion.div>
           </div>
 
