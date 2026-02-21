@@ -95,7 +95,7 @@ export default function AboutUs() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0264022879685!2d115.22557617488812!3d-8.688998888506093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd240fb2b3396fb%3A0x6b746860d5c31758!2sINSTIKI%20-%20Institut%20Bisnis%20dan%20Teknologi%20Indonesia!5e0!3m2!1sen!2sid!4v1714000000000!5m2!1sen!2sid"
                 className="absolute inset-0 w-full h-full grayscale-[50%] group-hover:grayscale-0 transition-all duration-500"
-                allowFullScreen // <--- THE FIX
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
