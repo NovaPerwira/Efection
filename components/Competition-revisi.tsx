@@ -27,7 +27,7 @@ const fadeRight = {
 
 const faqs = [
   {
-    question: "Who can participate in the competition?",
+    question: "Who can participate?",
     answer:
       "EFECTION Vol. IV is the first EFECTION to ever reach the international public. With it, we deliver multiple competitions with their own level of reach: Our speech, and storytelling competition is open for both junior highschool and senior highschool in Bali; Our debate competition is for any universities all around Bali; and finally, our Story Writing competition is open for the international public from all walks of life.",
   },
@@ -180,7 +180,7 @@ export default function CompetitionSection() {
           className="text-center mb-10 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)] text-white"
           style={{
             fontFamily: 'Grenze, serif',
-            fontSize: 'clamp(80px, 8vw, 128px)'
+            fontSize: 'clamp(50px, 8vw, 128px)'
           }}
         >
           Our Competitions
@@ -471,7 +471,9 @@ export default function CompetitionSection() {
             <div className="space-y-4">
               <h2 
                 className="text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
-                style={{ fontFamily: 'Grenze, serif' }}
+                style={{ 
+                fontFamily: 'Grenze, serif',
+                fontSize: 'clamp(50px, 8vw, 128px)'}}
               >
                 Ready to Join the <span className="text-[#FEDB73] italic">Competition?</span>
               </h2>
@@ -481,7 +483,7 @@ export default function CompetitionSection() {
             </div>
             
             {/* Tombol Registrasi */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full pt-4">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-1/1.1 pt-4">
               {/* Tombol Secondary (Dark Glass) */}
               <motion.a
                 href="https://drive.google.com/drive/folders/1qrJfH5YMzKgjMeXhJKwfhIyVfWQ8D2Fq?usp=sharing"
