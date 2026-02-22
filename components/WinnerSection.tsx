@@ -27,11 +27,11 @@ export default function WinnerSection() {
 
 
       {/* === CENTER CONTENT === */}
-      <div className="relative z-10 text-center flex flex-col items-center -mt-20">
+      <div className="relative text-center flex flex-col items-center -mt-20">
 
       {/* Title */}
       <h2
-        className="font-serif text-[#f5f1ea] drop-shadow-lg tracking-wide"
+        className="z-30 font-serif text-[#f5f1ea] drop-shadow-lg tracking-wide"
         style={{
           fontSize: "clamp(28px, 5vw, 64px)",
           lineHeight: "1.2"

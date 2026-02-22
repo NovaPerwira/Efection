@@ -8,7 +8,7 @@ import StickyZoomSection from "@/components/StickyZoom";
 import AboutSection from "@/components/#Obsolete-AboutUs";
 import FAQ from "@/components/#Obsolete-FAQ";
 // import Competition from "@/components/Competition";
-import Timeline from "@/components/Timeline";
+import Timeline from "@/components/NOV_Timeline";
 import Competition from "@/components/Competition-revisi";
 import WhyChooseUsSection from "@/components/#Obsolete-whychooseus";
 import CompetitionSection from "@/components/Competition-revisi";
