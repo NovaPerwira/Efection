@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import Image from "next/image";
 import CompetitionCard from "@/components/CompetitionCard";
 import Footer from "@/components/Footer";
+import { Instagram, Mail, MessageCircle, Zap, ArrowRight } from 'lucide-react';
 
 // ==========================================
 // SHARED ANIMATIONS & DATA
@@ -133,7 +134,7 @@ export default function CompetitionSection() {
   });
 
   // Path SVG diperpanjang menjadi 4000 untuk menutupi 4 section
-  const combinedPath = "M 1440,0 C 1440,300 200,200 200,500 C 200,800 1200,700 800,1000 C 400,1300 1200,1300 1200,1500 C 1200,1700 200,1750 200,2000 C 200,2250 1200,2250 1200,2500 C 1200,2750 200,2750 200,3000 C 200,3250 1200,3250 1200,3500 C 1200,3750 200,3750 200,4000";
+  const combinedPath = "M 1440,0 C 1440,300 200,200 200,500 C 200,800 1200,700 800,1000 C 400,1300 1200,1300 1200,1500 C 1200,1700 200,1750 200,2000 C 200,2250 1200,2250 1200,2500 C 1200,2750 200,2750 200,3000 C 200,3250 1200,3250 1200,3500 C 1200,3750 200,3750 200,5000";
 
   return (
     <section
@@ -249,7 +250,7 @@ export default function CompetitionSection() {
       {/* ========================================== */}
       {/* 3. FAQ */}
       {/* ========================================== */}
-    <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center">
+    <div id = "faq" className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24 min-h-screen flex items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start w-full">
         
         {/* LEFT IMAGE */}
@@ -324,157 +325,201 @@ export default function CompetitionSection() {
       {/* ========================================== */}
       {/* 4. ABOUT US */}
       {/* ========================================== */}
-      <div
-        id="aboutus"
-        className="relative z-20 w-full py-24 min-h-screen flex items-center"
+    <section
+      id="aboutus"
+      className="relative z-20 w-full py-20 md:py-28 flex items-center overflow-hidden"
+    >
+
+      {/* Dark Glass Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none" />
+
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-6 w-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ staggerChildren: 0.15 }}
       >
+        {/* ================= TOP SECTION ================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+
+          {/* LEFT: Title + Image */}
+          <motion.div
+            className="lg:col-span-6 flex flex-col gap-6"
+            variants={fadeRight}
+          >
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ type: "spring", stiffness: 80, damping: 18 }}
+                className="mb-4 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+                style={{
+                  fontFamily: "Grenze, serif",
+                  fontSize: "80px",
+                  color: "#fff",
+                  lineHeight: 1,
+                }}
+              >
+                About Us
+              </motion.h1>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 80, damping: 18 }}
+            className="mb-4 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
+            style={{
+              fontFamily: "Grenze, serif",
+              fontSize: "50px",
+              color: "#fff",
+              lineHeight: 1,
+            }}
+          >
+            English Festival Competition
+          </motion.h2>
+            </div>
+          </motion.div>
+
+          {/* RIGHT: Description Glass Card */}
+          <motion.div
+            className="lg:col-span-6 lg:pl-10"
+            variants={fadeLeft}
+          >
+            <div className="relative p-8 lg:p-12 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#FEDB73] to-transparent rounded-l-3xl opacity-80" />
+
+              <p className="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed">
+                EFECTION Vol. IV is the first EFECTION to ever reach the
+                international public. With it, we deliver multiple competitions
+                with their own level of reach. This is a place where English
+                enthusiasts can meet, compete, and improve themselves.
+              </p>
+
+              <p className="text-gray-400 text-sm sm:text-base mt-6">
+                Join us to showcase your talent, meet inspiring peers, and be
+                part of an unforgettable experience.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ================= INFO CARDS ================= */}
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto px-6 w-full"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ staggerChildren: 0.15 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={fadeUp}
         >
-          {/* ================= MOBILE STACK ================= */}
-          <div className="md:hidden space-y-12 text-center">
-
-            <motion.h1
-              className="text-white drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              variants={fadeUp}
-              style={{ fontFamily: 'Grenze, serif', fontSize: '48px' }}
+          {/* LOCATION CARD */}
+          <div className="flex flex-col bg-white/[0.03] border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
+            <h3
+              className="text-[#FEDB73] mb-4 text-3xl"
+              style={{ fontFamily: "Grenze, serif" }}
             >
-              ABOUT US
-            </motion.h1>
-
-            <motion.h2
-              className="text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              variants={fadeUp}
-              style={{
-                fontFamily: 'Grenze, serif',
-                fontSize: '36px',
-                lineHeight: '1.1',
-              }}
-            >
-              English Festival Competition
-            </motion.h2>
-
-            <motion.p
-              className="text-[#e2ddd4] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              variants={fadeUp}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </motion.p>
-
-            <motion.div
-              className="space-y-8 text-[#e2ddd4]"
-              variants={fadeUp}
-            >
-              <div>
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
-                  Location
-                </h3>
-                <p>Instiki Campus</p>
-              </div>
-
-              <div>
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
-                  Prize Pool
-                </h3>
-                <p>IDR 13,500,000</p>
-              </div>
-
-              <div>
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '28px' }}>
-                  Range
-                </h3>
-                <ul className="space-y-1">
-                  <li>Middle School</li>
-                  <li>High School</li>
-                  <li>Varsity</li>
-                  <li>Open Category</li>
-                </ul>
-              </div>
-            </motion.div>
+              Location
+            </h3>
+            <p className="text-white text-base font-medium">
+              Instiki Campus, Denpasar
+            </p>
           </div>
 
-          {/* ================= DESKTOP GRID ================= */}
-          <div className="hidden md:grid grid-cols-12 gap-y-10 items-center">
+          {/* PRIZE CARD (HIGHLIGHTED) */}
+          <div className="relative flex flex-col justify-center items-center bg-gradient-to-br from-[#1a150b] to-[#0A0A0A] border-2 border-[#FEDB73]/40 rounded-3xl p-8 shadow-[0_0_40px_rgba(254,219,115,0.15)] transform hover:-translate-y-2 transition-all duration-300 overflow-hidden">
 
-            <motion.h1
-              className="col-start-5 col-span-4 text-white drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              variants={fadeUp}
-              style={{ fontFamily: 'Grenze, serif', fontSize: '80px' }}
+            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#FEDB73]/10 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+            <motion.h5>
+            <p className="uppercase tracking-[0.3em] text-[#FEDB73] mb-3 font-bold text-center">
+              Total Prize Pool
+            </p>
+            </motion.h5>
+
+            <h3 className="text-5xl font-black text-white tracking-tight drop-shadow-md text-center">
+              IDR 13,500,000
+            </h3>
+          </div>
+
+          {/* RANGE CARD */}
+          <div className="flex flex-col bg-white/[0.03] border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
+            <h3
+              className="text-[#FEDB73] mb-6 text-3xl"
+              style={{ fontFamily: "Grenze, serif" }}
             >
-              ABOUT US
-            </motion.h1>
+              Criteria Range
+            </h3>
 
-            <motion.h2
-              className="col-start-2 col-span-8 text-[#F4D35E] drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)]"
-              variants={fadeUp}
-              style={{
-                fontFamily: 'Grenze, serif',
-                fontSize: '80px',
-                lineHeight: '1.1',
-              }}
-            >
-              English Festival Competition
-            </motion.h2>
-
-            <motion.div
-              className="col-start-11 col-span-2 row-start-2 row-span-4 relative w-[300px] h-[480px]"
-              variants={fadeRight}
-            >
-              <Image
-                src="/images/aboutus/photo.png"
-                alt="Effection IV event"
-                fill
-                className="object-cover rounded-md shadow-2xl shadow-black/60"
-              />
-            </motion.div>
-
-            <motion.p
-              className="col-start-2 col-span-8 text-[#e2ddd4]"
-              variants={fadeUp}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </motion.p>
-
-            <motion.div
-              className="col-start-2 col-span-9 grid grid-cols-9 text-[#e2ddd4]"
-              variants={fadeUp}
-            >
-              <div className="col-span-3">
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
-                  Location
-                </h3>
-                <p>Instiki Campus</p>
-              </div>
-
-              <div className="col-span-3">
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
-                  Prize Pool
-                </h3>
-                <p>IDR 13,500,000</p>
-              </div>
-
-              <div className="col-span-3">
-                <h3 className="text-[#F4D35E]" style={{ fontFamily: 'Grenze, serif', fontSize: '40px' }}>
-                  Range
-                </h3>
-                <ul className="list-disc list-inside">
-                  <li>Middle School</li>
-                  <li>High School</li>
-                  <li>Varsity</li>
-                  <li>Open Category</li>
-                </ul>
-              </div>
-            </motion.div>
-
+            <ul className="flex flex-col gap-4 text-white">
+              <li>✦ Middle School</li>
+              <li>✦ High School</li>
+              <li>✦ Varsity</li>
+              <li>✦ Open Category</li>
+            </ul>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
+    </section>
+              {/* === CTA Banner Section (Dark Glassmorphism) === */}
+        <section className="relative z-30 overflow-hidden rounded-[2rem] bg-white/[0.03] border border-white/10 px-6 py-16 md:py-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-md">
+          
+          {/* Efek Glow Abstrak Emas & Coklat */}
+          <div id = "register" className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
+            <div className="absolute -top-[50%] -left-[10%] w-[50%] h-[150%] rounded-[100%] bg-gradient-to-r from-[#FEDB73]/20 to-transparent blur-3xl transform rotate-12"></div>
+            <div className="absolute -bottom-[50%] -right-[10%] w-[50%] h-[100%] rounded-[100%] bg-gradient-to-l from-[#C09B6F]/20 to-transparent blur-3xl"></div>
+          </div>
+
+          <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
+            <div className="space-y-4">
+              <h2 
+                className="text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
+                style={{ fontFamily: 'Grenze, serif' }}
+              >
+                Ready to Join the <span className="text-[#FEDB73] italic">Competition?</span>
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+                Access the guidebook and secure your spot in the Regional or Story Writing competitions today.
+              </p>
+            </div>
+            
+            {/* Tombol Registrasi */}
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full pt-4">
+              {/* Tombol Secondary (Dark Glass) */}
+              <motion.a
+                href="https://drive.google.com/drive/folders/1qrJfH5YMzKgjMeXhJKwfhIyVfWQ8D2Fq?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 bg-white/5 border border-white/20 text-white px-6 py-3 rounded-full font-medium shadow-lg hover:bg-white/10 hover:border-white/30 transition-all"
+              >
+                Learn More
+                <ArrowRight size={18} />
+              </motion.a>
+
+              {/* Tombol Primary (Gold) */}
+              <motion.a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSevBO-Wm3H_U2zQRjZt63FFl6pGCAYKxUw63WOwnAwvl7WTcA/viewform?usp=dialog"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 bg-[#FEDB73] text-black px-6 py-3 rounded-full font-semibold shadow-[0_10px_30px_rgba(254,219,115,0.2)] hover:bg-[#ffe594] transition-colors"
+              >
+                Register (Regional)
+              </motion.a>
+
+              <motion.a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfnS_mIXivrGGbYp2DFvacLxVK_TCZp6QzKlITBkZZtfSHcpw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 bg-[#FEDB73] text-black px-6 py-3 rounded-full font-semibold shadow-[0_10px_30px_rgba(254,219,115,0.2)] hover:bg-[#ffe594] transition-colors"
+              >
+                Register (Story Writing)
+              </motion.a>
+            </div>
+          </div>
+        </section>
         <Footer />
     </section>
   )
