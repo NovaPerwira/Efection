@@ -61,7 +61,7 @@ const faqs = [
     ),
   }, 
   {
-    question: "When is the submission deadline?",
+    question: "When is the deadline?",
     answer:
       "The preliminary submission deadline for the Speech & Storytelling Competition is April 17, 2026. Participants are required to upload their performance video to YouTube. The submission must include the YouTube video link as well as the performance script. \n The submission deadline for the Story Writing Competition is May 2, 2026. Participants may submit multiple stories until the deadline, however, each story must be submitted as a separate entry.",
   },
@@ -76,7 +76,7 @@ const faqs = [
       "EFECTION, short for ECSI English Festival Competition, is an annual, yearly-held, competition held by the English Club of INSTIKI. It is a place where English enthusiasts can meet, fight, and improve themselves. EFECTION has entered it's 4th year being held consecutively, and with it it brings many improvements.",
   },
   {
-    question: "What is new with EFECTION Vol. IV?",
+    question: "What is new?",
     answer:
       "EFECTION Vol. IV brings forthwith many improvements to the yearly-held EFECTION. The biggest improvement Vol. IV has is its new international reach. Vol. IV also introduces the preliminary system for speech and storytelling competitions to allow it to be open to a wider range of speakers and storytellers.",
   },
