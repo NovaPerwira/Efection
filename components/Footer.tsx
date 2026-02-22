@@ -22,8 +22,8 @@ const quickLinks = [
 
 export default function Footer() {
   const socials = [
-    { icon: <Instagram size={22} />, link: '#' },
-    { icon: <Facebook size={22} />, link: '#' },
+    { icon: <Instagram size={22} />, link: 'https://www.instagram.com/ecsi.instiki/' },
+    { icon: <Instagram size={22} />, link: 'https://www.instagram.com/efection_instiki/' },
     { icon: <Mail size={22} />, link: 'mailto:ecsi@instiki.ac.id' },
   ];
 
