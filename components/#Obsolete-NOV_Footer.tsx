@@ -19,7 +19,7 @@ export default function Footer() {
       
       {/* Background Decor (Konsisten dengan section sebelumnya) */}
        <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
     
 

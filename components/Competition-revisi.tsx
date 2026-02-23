@@ -146,7 +146,7 @@ export default function CompetitionSection() {
       {/* Background Layer */}
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1614]/35 via-[#C09B6F]/50 to-[#f9c88b]/50"></div>
@@ -262,7 +262,7 @@ export default function CompetitionSection() {
           className="hidden md:block md:col-span-4 lg:col-span-5"
         >
           <img
-            src="/images/FAQ/content.png"
+            src="/images/FAQ/content.webp"
             alt="FAQ"
             className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20 mt-25"
           />

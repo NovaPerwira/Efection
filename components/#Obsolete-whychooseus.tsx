@@ -79,7 +79,7 @@ export default function CombinedCompetitionSection() {
       // Tambahkan `bg-fixed` untuk mematikan pergerakan background (Parallax)
       className="bg-[#3b352d] bg-fixed relative w-full overflow-hidden flex flex-col items-center"
       style={{
-        backgroundImage: "url('/images/aboutus/bg_overlay.png')",
+        backgroundImage: "url('/images/aboutus/bg_overlay.webp')",
         backgroundSize: '280px 280px',
       }}
     >
