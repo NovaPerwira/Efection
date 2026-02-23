@@ -210,10 +210,7 @@ export default function Home() {
             
             {/* <Competition /> */}
              <CompetitionSection />
-             <FAQ />
-             <AboutUs />
             {/* <FAQ /> */}
-           <Footer />
           </div>
         </>
       )}
