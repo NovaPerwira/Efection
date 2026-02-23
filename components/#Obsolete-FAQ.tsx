@@ -16,7 +16,7 @@ export default function FAQ() {
       <div
         className="absolute inset-0 bg-repeat"
         style={{
-          backgroundImage: "url('/images/FAQ/bg_overlay.png')",
+          backgroundImage: "url('/images/FAQ/bg_overlay.webp')",
           backgroundSize: '280px 280px',
         }}
       />
@@ -38,7 +38,7 @@ export default function FAQ() {
             className="hidden md:block md:col-span-4"
           >
             <img
-              src="/images/FAQ/content.png"
+              src="/images/FAQ/content.webp"
               alt="FAQ"
               className="w-[600px] h-[635px] rounded-xl object-cover shadow-xl"
             />

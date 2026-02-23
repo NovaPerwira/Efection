@@ -23,7 +23,7 @@ export default function AboutSection() {
         overflow-hidden
         text-[#1b1b1b]
         bg-[#C09B6F]
-        bg-[url('/images/aboutus/bg_overlay.png')]
+        bg-[url('/images/aboutus/bg_overlay.webp')]
         bg-repeat
         bg-[length:280px_280px]
       "
@@ -124,7 +124,7 @@ export default function AboutSection() {
             variants={fadeRight}
           >
             <Image
-              src="/images/aboutus/photo.png"
+              src="/images/aboutus/photo.webp"
               alt="Effection IV event"
               fill
               className="object-cover rounded-md shadow-2xl shadow-black/100"
