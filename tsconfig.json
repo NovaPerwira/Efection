@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "components/Footer.jsx", "components/Competition-revisi.jsx"  ],
+, "components/Footer.tsx", "components/Competition-revisi.jsx", "components/AboutUs.jsx"  ],
   "exclude": ["node_modules"]
 }

@@ -5,13 +5,16 @@ import { motion } from 'framer-motion'
 import EfectionIVSection from "@/components/EfectionIVSection";
 import WinnerSection from "@/components/WinnerSection";
 import StickyZoomSection from "@/components/StickyZoom";
-import AboutSection from "@/components/#Obsolete-AboutUs";
-import FAQ from "@/components/#Obsolete-FAQ";
+// import AboutSection from "@/components/#Obsolete-AboutUs";
+// import FAQ from "@/components/#Obsolete-FAQ";
 // import Competition from "@/components/Competition";
 import Timeline from "@/components/NOV_Timeline";
 import Competition from "@/components/Competition-revisi";
 import WhyChooseUsSection from "@/components/#Obsolete-whychooseus";
 import CompetitionSection from "@/components/Competition-revisi";
+import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
+import AboutUs from "@/components/AboutUS"
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -207,8 +210,10 @@ export default function Home() {
             
             {/* <Competition /> */}
              <CompetitionSection />
+             <FAQ />
+             <AboutUs />
             {/* <FAQ /> */}
-           
+           <Footer />
           </div>
         </>
       )}
