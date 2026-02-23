@@ -7,29 +7,29 @@ const timelineEvents = [
   {
     id: 1,
     date: "23 February",
-    title: "Open OR",
-    description: "The journey begins. Recruitment opens for all aspiring candidates.",
+    title: "Open Regist",
+    description: "The journey begins. Registration opens for all aspiring candidates.",
     align: "top"
   },
   {
     id: 2,
     date: "25 April",
     title: "Preliminary Announcement",
-    description: "The first wave of selections. Who will proceed to the next stage?",
+    description: "The first wave of selections marks the closing registration of Story Telling and Speech. Who will proceed to the next stage?",
     align: "bottom"
   },
   {
     id: 3,
     date: "2 May",
-    title: "Close OR / Debate & SW",
-    description: "Recruitment closes. The intellectual battleground commences.",
+    title: "Close Regist",
+    description: "Closing Registration for Debate and Story Writing.",
     align: "top"
   },
   {
     id: 4,
     date: "17 & 24 May",
     title: "D-Day",
-    description: "The final culmination. The new era is established.",
+    description: "The final culmination.",
     align: "bottom"
   },
 ];

@@ -27,7 +27,7 @@ const fadeRight = {
 
 const faqs = [
   {
-    question: "Who can participate in the competition?",
+    question: "Who can participate?",
     answer:
       "EFECTION Vol. IV is the first EFECTION to ever reach the international public. With it, we deliver multiple competitions with their own level of reach: Our speech, and storytelling competition is open for both junior highschool and senior highschool in Bali; Our debate competition is for any universities all around Bali; and finally, our Story Writing competition is open for the international public from all walks of life.",
   },
@@ -61,7 +61,7 @@ const faqs = [
     ),
   }, 
   {
-    question: "When is the submission deadline?",
+    question: "When is the deadline?",
     answer:
       "The preliminary submission deadline for the Speech & Storytelling Competition is April 17, 2026. Participants are required to upload their performance video to YouTube. The submission must include the YouTube video link as well as the performance script. \n The submission deadline for the Story Writing Competition is May 2, 2026. Participants may submit multiple stories until the deadline, however, each story must be submitted as a separate entry.",
   },
@@ -76,7 +76,7 @@ const faqs = [
       "EFECTION, short for ECSI English Festival Competition, is an annual, yearly-held, competition held by the English Club of INSTIKI. It is a place where English enthusiasts can meet, fight, and improve themselves. EFECTION has entered it's 4th year being held consecutively, and with it it brings many improvements.",
   },
   {
-    question: "What is new with EFECTION Vol. IV?",
+    question: "What is new?",
     answer:
       "EFECTION Vol. IV brings forthwith many improvements to the yearly-held EFECTION. The biggest improvement Vol. IV has is its new international reach. Vol. IV also introduces the preliminary system for speech and storytelling competitions to allow it to be open to a wider range of speakers and storytellers.",
   },
@@ -146,7 +146,7 @@ export default function CompetitionSection() {
       {/* Background Layer */}
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1614]/35 via-[#C09B6F]/50 to-[#f9c88b]/50"></div>
@@ -180,7 +180,7 @@ export default function CompetitionSection() {
           className="text-center mb-10 drop-shadow-[0_4px_1px_rgba(0,0,0,0.5)] text-white"
           style={{
             fontFamily: 'Grenze, serif',
-            fontSize: 'clamp(80px, 8vw, 128px)'
+            fontSize: 'clamp(50px, 8vw, 128px)'
           }}
         >
           Our Competitions
@@ -262,7 +262,7 @@ export default function CompetitionSection() {
           className="hidden md:block md:col-span-4 lg:col-span-5"
         >
           <img
-            src="/images/FAQ/content.png"
+            src="/images/FAQ/content.webp"
             alt="FAQ"
             className="w-full max-w-[600px] h-auto rounded-xl object-cover shadow-xl border border-[#FEDB73]/20 mt-25"
           />
@@ -471,7 +471,9 @@ export default function CompetitionSection() {
             <div className="space-y-4">
               <h2 
                 className="text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]"
-                style={{ fontFamily: 'Grenze, serif' }}
+                style={{ 
+                fontFamily: 'Grenze, serif',
+                fontSize: 'clamp(50px, 8vw, 128px)'}}
               >
                 Ready to Join the <span className="text-[#FEDB73] italic">Competition?</span>
               </h2>
@@ -481,7 +483,7 @@ export default function CompetitionSection() {
             </div>
             
             {/* Tombol Registrasi */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full pt-4">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-1/1.1 pt-4">
               {/* Tombol Secondary (Dark Glass) */}
               <motion.a
                 href="https://drive.google.com/drive/folders/1qrJfH5YMzKgjMeXhJKwfhIyVfWQ8D2Fq?usp=sharing"

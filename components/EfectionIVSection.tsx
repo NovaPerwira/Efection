@@ -21,7 +21,7 @@ export default function EfectionIVSection({
 
       {/* Vertical Stripes Pattern */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
 
       {/* Central Emblem Silhouette (Decorative Background) */}
@@ -177,13 +177,13 @@ export default function EfectionIVSection({
 
       {/* Left Column */}
       <SideImage
-        src="/images/Hero/Group 5.png"
+        src="/images/Hero/Group 5.webp"
         className="top-16 -left-4 md:top-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.2}
         rotation={-5}
       />
       <SideImage
-        src="/images/Hero/Group 6.png"
+        src="/images/Hero/Group 6.webp"
         className="bottom-4 -left-4 md:bottom-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.4}
         rotation={5}
@@ -191,13 +191,13 @@ export default function EfectionIVSection({
 
       {/* Right Column */}
       <SideImage
-        src="/images/Hero/Group 7.png"
+        src="/images/Hero/Group 7.webp"
         className="top-16 -right-4 md:top-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.3}
         rotation={5}
       />
       <SideImage
-        src="/images/Hero/Group 8.png"
+        src="/images/Hero/Group 8.webp"
         className="bottom-4 -right-4 md:bottom-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.5}
         rotation={-5}

@@ -28,7 +28,7 @@ export default function AboutUs() {
       className="relative z-20 w-full py-16 md:py-24 flex items-center border-t border-white/5 bg-[#0A0A0A]/40 backdrop-blur-sm overflow-hidden"
     >
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1614]/35 via-[#C09B6F]/50 to-[#f9c88b]/50 pointer-events-none"></div>
@@ -58,7 +58,7 @@ export default function AboutUs() {
             </div>
             <div className="relative w-full h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 group">
               <Image
-                src="/images/aboutus/photo.png"
+                src="/images/aboutus/photo.webp"
                 alt="Effection IV event"
                 fill
                 className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"

@@ -18,7 +18,7 @@ export default function WinnerSection() {
 
       {/* 1. Base Pattern (Floral/Damask) */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-/50 via-[#C09B6F]/50 to-[#ffd867]"></div>
       </div>
 
@@ -71,13 +71,13 @@ export default function WinnerSection() {
 
       {/* Left Column */}
       <SideImage
-        src="/images/subHero/Group 9-1.png"
+        src="/images/subHero/Group 9-1.webp"
         className="top-4 -left-4 md:top-15 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.2}
         rotation={-5}
       />
       <SideImage
-        src="/images/subHero/Group 9.png"
+        src="/images/subHero/Group 9.webp"
         className="bottom-16 -left-4 md:bottom-0 md:left-[2%] xl:left-[2%] 2xl:left-[5%] min-[2000px]:left-[15%]"
         delay={0.4}
         rotation={5}
@@ -85,13 +85,13 @@ export default function WinnerSection() {
 
       {/* Right Column */}
       <SideImage
-        src="/images/subHero/Group 10.png"
+        src="/images/subHero/Group 10.webp"
         className="top-4 -right-4 md:top-16 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.3}
         rotation={5}
       />
       <SideImage
-        src="/images/subHero/Group 11.png"
+        src="/images/subHero/Group 11.webp"
         className="bottom-16 -right-4 md:bottom-0 md:right-[2%] xl:right-[2%] 2xl:right-[5%] min-[2000px]:right-[15%]"
         delay={0.5}
         rotation={-5}

@@ -108,7 +108,7 @@ export default function Navbar() {
             h-16 px-6 mt-4
             rounded-full transition-all duration-300"
           style={{
-            backgroundImage: "url('/images/Hero/Header.png')",
+            backgroundImage: "url('/images/Hero/Header.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
