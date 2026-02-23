@@ -528,41 +528,36 @@ export default function CompetitionSection() {
 }
 
 function FAQItem({ question, answer }: { question: string; answer: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <motion.div
       layout
       variants={{
-        hidden: { opacity: 0, y: 15 },
+        hidden: { opacity: 0, y: 20 },
         show: { opacity: 1, y: 0 },
       }}
-      className={`
-        relative overflow-hidden rounded-2xl border transition-all duration-300
-        ${isOpen 
-          ? "bg-white/[0.08] border-[#FEDB73]/40 shadow-[0_10px_30px_rgba(254,219,115,0.05)]" 
-          : "bg-white/[0.03] border-white/10 hover:bg-white/[0.05] hover:border-white/20"}
-        backdrop-blur-md
-      `}
+      transition={{ type: "spring", stiffness: 90, damping: 20 }}
+      className="bg-[#FEDB73]/60 backdrop-blur-md border border-[#FEDB73]/20 rounded-xl p-5 shadow-lg"
     >
-      <button
+      {/* BUTTON */}
+      <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center text-left p-4 sm:p-5 lg:p-6 outline-none gap-3"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="w-full flex justify-between items-center text-right text-white font-semibold text-lg"
       >
-        <span className={`font-medium text-sm sm:text-base transition-colors duration-300 ${isOpen ? "text-[#FEDB73]" : "text-white"}`}>
-          {question}
-        </span>
-        <motion.div
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className={`flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border transition-colors ${isOpen ? "border-[#FEDB73] text-[#FEDB73]" : "border-white/20 text-white"}`}
+        {question}
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
-          <svg width="10" height="10" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 1V13M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </motion.div>
-      </button>
+          ▼
+        </motion.span>
+      </motion.button>
 
+      {/* ANSWER */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -570,14 +565,18 @@ function FAQItem({ question, answer }: { question: string; answer: React.ReactNo
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              duration: 0.35,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+            className="overflow-hidden"
           >
-            <div className="px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 pt-1 text-gray-300 text-xs sm:text-sm text-left leading-relaxed">
+            <div className="pt-4 text-[#e2ddd4] text-left leading-relaxed">
               {answer}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
-  );
+  )
 }
