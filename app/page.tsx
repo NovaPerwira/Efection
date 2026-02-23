@@ -132,7 +132,7 @@ export default function Home() {
     {/* Background dengan Overlay Transisi */}
     <div className="absolute inset-0 z-0">
       <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <img src="images/Hero/seamless3.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="images/Hero/seamless3.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
       </div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#C09B6F]/50 via-[#C09B6F]/50 to-[#1a1614]"></div>
