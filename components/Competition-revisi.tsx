@@ -411,18 +411,32 @@ export default function CompetitionSection() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           variants={fadeUp}
         >
-          {/* LOCATION CARD */}
-          <div className="flex flex-col bg-white/[0.03] border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
-            <h3
-              className="text-[#FEDB73] mb-4 text-3xl"
-              style={{ fontFamily: "Grenze, serif" }}
-            >
-              Location
-            </h3>
-            <p className="text-white text-base font-medium">
-              Instiki Campus, Denpasar
-            </p>
-          </div>
+{/* LOCATION CARD */}
+<div className="flex flex-col bg-white/[0.03] border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:border-white/20 transition-all duration-300">
+  <h3
+    className="text-[#FEDB73] mb-2 text-3xl"
+    style={{ fontFamily: "Grenze, serif" }}
+  >
+    Location
+  </h3>
+
+  <p className="text-white text-base font-medium mb-1">
+    Instiki Campus, Denpasar
+  </p>
+
+  {/* MAP */}
+  <div className="w-full h-[300px] rounded-2xl overflow-hidden border border-white/10">
+    <iframe
+      src="https://www.google.com/maps?q=INSTIKI%20Denpasar&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    />
+  </div>
+</div>
 
           {/* PRIZE CARD (HIGHLIGHTED) */}
           <div className="relative flex flex-col justify-center items-center bg-gradient-to-br from-[#1a150b] to-[#0A0A0A] border-2 border-[#FEDB73]/40 rounded-3xl p-8 shadow-[0_0_40px_rgba(254,219,115,0.15)] transform hover:-translate-y-2 transition-all duration-300 overflow-hidden">
