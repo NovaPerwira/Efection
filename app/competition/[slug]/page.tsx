@@ -226,11 +226,11 @@ export default function CompetitionDetailPage() {
                   </div>
                 </div>
               ) : (
-                {typeof data.price === "string" && (
+                typeof data.price === "string" && (
                     <div className="text-[#F4D35E] font-bold text-[clamp(40px,4vw,50px)] drop-shadow-md">
                       {data.price}
                     </div>
-                  )}
+                  )
               )}
             </div>
 
