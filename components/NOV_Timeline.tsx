@@ -13,7 +13,7 @@ const timelineEvents = [
   },
   {
     id: 2,
-    date: "25 April",
+    date: "13 May",
     title: "Preliminary Announcement",
     description: "The first wave of selections marks the closing registration of Story Telling and Speech. Who will proceed to the next stage?",
     align: "bottom"
